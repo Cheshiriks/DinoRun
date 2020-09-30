@@ -1,3 +1,0 @@
-include ':puzzle'
-include ':app'
-rootProject.name = "CorgiRun"
