@@ -27,6 +27,7 @@ public class LoopPuz implements Runnable {
         float delta = 0;
         timer = System.currentTimeMillis();
 
+        //Главный цикл игры. Обновляем экран 60 раз в секунду
         while (running) {
 
             float nowTime = System.nanoTime();
