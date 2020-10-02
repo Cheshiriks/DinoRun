@@ -1,8 +1,15 @@
 package com.example.puzzle;
 
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Rect;
+import android.view.SurfaceHolder;
+import android.view.SurfaceView;
+
 import java.util.Date;
 
-public class LoopPuz implements Runnable {
+public class LoopPuz extends SurfaceView implements Runnable {
 
     private final float FPS = 60;
 
@@ -13,6 +20,20 @@ public class LoopPuz implements Runnable {
     private boolean running = false;
 
     Thread gameThread = null;
+    CorePuz corePuz;
+    Bitmap frameBuffer;
+    SurfaceHolder surfaceHolder;
+    Canvas canvas;
+    Rect rect;
+
+    public LoopPuz(CorePuz corePuz, Bitmap frameBuffer) {
+        super(corePuz);
+        this.frameBuffer = frameBuffer;
+        this.corePuz = corePuz;
+        this.surfaceHolder = getHolder();
+        this.rect = new Rect();
+        this.canvas = new Canvas();
+    }
 
     //temp - проверка обновления цикла
     float updates = 0;
@@ -74,10 +95,18 @@ public class LoopPuz implements Runnable {
 
     private void updateGame() {
         updates++;
+        corePuz.getCurrentScene().update();
 
     }
 
     private void drawingGame() {
         drawing++;
+        if (surfaceHolder.getSurface().isValid()) {
+            canvas = surfaceHolder.lockCanvas();
+            canvas.getClipBounds(rect);
+            canvas.drawBitmap(frameBuffer, null, rect, null);
+            corePuz.getCurrentScene().drawing();
+            surfaceHolder.unlockCanvasAndPost(canvas);
+        }
     }
 }
