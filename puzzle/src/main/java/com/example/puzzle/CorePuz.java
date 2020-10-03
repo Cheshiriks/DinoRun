@@ -10,22 +10,21 @@ import android.view.WindowManager;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.security.PublicKey;
+
 public class CorePuz extends AppCompatActivity {
 
     private final float FRAME_BUFFER_WIDTH = 1920;
     private final float FRAME_BUFFER_HEIGHT = 1080;
 
     private LoopPuz loopPuz;
-
     private GraphicsPuz graphicsPuz;
+    private ScenePuz scenePuz;
+    private TouchListenerPuz touchListenerPuz;
 
     private Display display;
-
     private Point sizeDisplay;
-
     private Bitmap frameBuffer;
-
-    private ScenePuz scenePuz;
 
     private float sceneWidth;
     private float sceneHeight;
@@ -52,6 +51,7 @@ public class CorePuz extends AppCompatActivity {
 
         loopPuz = new LoopPuz(this, frameBuffer);
         graphicsPuz = new GraphicsPuz(getAssets(), frameBuffer);
+        touchListenerPuz = new TouchListenerPuz(loopPuz, sceneWidth, sceneHeight);
 
         scenePuz = getStartScene();
 
@@ -80,6 +80,10 @@ public class CorePuz extends AppCompatActivity {
         if (isFinishing()) {
             scenePuz.dispose();
         }
+    }
+
+    public TouchListenerPuz getTouchListenerPuz() {
+        return touchListenerPuz;
     }
 
     public GraphicsPuz getGraphicsPuz() {
