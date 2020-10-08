@@ -14,6 +14,7 @@ public class MainMenuScene extends ScenePuz {
 
     @Override
     public void update() {
+        //Новая игра. Переход на GameScene
         if (corePuz.getTouchListenerPuz().getTouchUp(150, 700, 350, 70)) {
             corePuz.setScene(new GameScene(corePuz));
         }
