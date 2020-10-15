@@ -23,7 +23,7 @@ public class GraphicsPuz implements GraphicsPuzService {
     public GraphicsPuz(AssetManager assetManagerGame, Bitmap frameBufferGame) {
         this.assetManagerGame = assetManagerGame;
         this.frameBufferGame = frameBufferGame;
-        //пока передаем frameBufferGame в canvas. Для динамичного фона надо будет рисовать поверх
+        //передаем frameBufferGame в canvas. Будет отрисовывать игру не на canvas, а на frameBufferGame, чтобы масштабировать на всех устройствах
         this.canvasGame = new Canvas(frameBufferGame);
         this.paintGame = new Paint();
     }
@@ -88,6 +88,11 @@ public class GraphicsPuz implements GraphicsPuzService {
             }
         }
         return textureGame;
+    }
+
+    public Bitmap newSprite(Bitmap textureAtlas, int x, int y, int widthSprite, int heightSprite) {
+        Bitmap newSprite = Bitmap.createBitmap(textureAtlas, x, y, widthSprite, heightSprite);
+        return newSprite;
     }
 
 }

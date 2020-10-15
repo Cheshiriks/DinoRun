@@ -3,6 +3,7 @@ package com.example.corgirun.scenes;
 import android.graphics.Color;
 
 import com.example.corgirun.R;
+import com.example.corgirun.clases.GameManager;
 import com.example.puzzle.CorePuz;
 import com.example.puzzle.ScenePuz;
 
@@ -16,10 +17,12 @@ public class GameScene extends ScenePuz {
     }
 
     GameState gameState;
+    GameManager gameManager;
 
     public GameScene(CorePuz corePuz) {
         super(corePuz);
         gameState = GameState.READE;
+        gameManager = new GameManager(corePuz, sceneWidth, sceneHeight);
     }
 
     @Override
@@ -72,12 +75,12 @@ public class GameScene extends ScenePuz {
     }
 
     private void updateStateRunning() {
-
+        gameManager.update();
     }
 
     private void drawingStateRunning() {
         graphicsPuz.clearScene(Color.BLACK);
-        graphicsPuz.drawText("Go!", 600, 300, Color.BLUE, 160, null);
+        gameManager.drawing(corePuz, graphicsPuz);
     }
 
     private void updateStatePause() {

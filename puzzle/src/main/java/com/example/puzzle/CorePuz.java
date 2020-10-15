@@ -108,4 +108,14 @@ public class CorePuz extends AppCompatActivity {
         scenePuz.update();
         this.scenePuz = scenePuz;
     }
+
+    public float getSceneWidth() {
+        return sceneWidth;
+    }
+
+    public float getSceneHeight() {
+        return sceneHeight;
+    }
+
+
 }
