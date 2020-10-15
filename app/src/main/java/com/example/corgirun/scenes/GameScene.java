@@ -6,6 +6,7 @@ import com.example.corgirun.R;
 import com.example.corgirun.clases.GameManager;
 import com.example.puzzle.CorePuz;
 import com.example.puzzle.ScenePuz;
+import java.util.Date;
 
 public class GameScene extends ScenePuz {
 
@@ -78,9 +79,29 @@ public class GameScene extends ScenePuz {
         gameManager.update();
     }
 
+    //----------Debug FPS------------
+    float updates = 0;
+    float drawings = 0;
+    long timer = System.currentTimeMillis();;
+    //----------Debug FPS------------
+
+
     private void drawingStateRunning() {
         graphicsPuz.clearScene(Color.BLACK);
         gameManager.drawing(corePuz, graphicsPuz);
+
+        //----------Debug FPS------------
+        graphicsPuz.drawText("FPS " + drawings, 150, 150, Color.WHITE, 70, null);
+        updates++;
+        if (System.currentTimeMillis() - timer > 1000) {
+            Date date = new Date();
+            drawings = updates;
+            System.out.println("FPS " + updates);
+            updates = 0;
+            timer += 1000;
+        }
+        //----------Debug FPS------------
+
     }
 
     private void updateStatePause() {
