@@ -40,7 +40,12 @@ public class LoaderAssets {
 	}
 
 	private void loadBackground(GraphicsPuz graphicsPuz) {
-		ResourceUtils.background = graphicsPuz.newTexture("background.png");
+		//ResourceUtils.background = graphicsPuz.newTexture("background.png");
+
+		Bitmap background = graphicsPuz.newTexture("background.png");
+		double prop = (double) 1080 / background.getHeight();
+		ResourceUtils.background = Bitmap.createScaledBitmap(background, (int)(background.getWidth() * (prop)), (int)(background.getHeight() * (prop)), true);
+
 	}
 
 }
