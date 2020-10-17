@@ -15,7 +15,7 @@ public class MainMenuScene extends ScenePuz {
     @Override
     public void update() {
         //Новая игра. Переход на GameScene
-        if (corePuz.getTouchListenerPuz().getTouchUp(150, 700, 350, 70)) {
+        if (corePuz.getTouchListenerPuz().getTouchUp(20, 100, 45, 9)) {
             corePuz.setScene(new GameScene(corePuz));
         }
     }
@@ -23,10 +23,10 @@ public class MainMenuScene extends ScenePuz {
     @Override
     public void drawing() {
         graphicsPuz.clearScene(Color.BLACK);
-        graphicsPuz.drawText(corePuz.getString(R.string.main_menu_app_name), 600, 300, Color.BLUE, 160, null);
-        graphicsPuz.drawText(corePuz.getString(R.string.main_menu_new_game), 150, 700, Color.BLUE, 60, null);
-        graphicsPuz.drawText(corePuz.getString(R.string.main_menu_settings), 150, 800, Color.BLUE, 60, null);
-        graphicsPuz.drawText(corePuz.getString(R.string.main_menu_results), 150, 900, Color.BLUE, 60, null);
+        graphicsPuz.drawText(corePuz.getString(R.string.main_menu_app_name), 75, 35, Color.BLUE, 20, null);
+        graphicsPuz.drawText(corePuz.getString(R.string.main_menu_new_game), 20, 100, Color.BLUE, 8, null);
+        graphicsPuz.drawText(corePuz.getString(R.string.main_menu_settings), 20, 115, Color.BLUE, 8, null);
+        graphicsPuz.drawText(corePuz.getString(R.string.main_menu_results), 20, 130, Color.BLUE, 8, null);
 
     }
 

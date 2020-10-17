@@ -12,27 +12,23 @@ public class LoaderAssets {
 		loadTexture(graphicsPuz);
 		loadSpritePlayer(graphicsPuz);
 		loadBackground(graphicsPuz);
+		loadTextureJump(graphicsPuz);
+
+		loadTFireplace(graphicsPuz);
+		loadSpriteFireplace(graphicsPuz);
 	}
 
 	private void loadSpritePlayer(GraphicsPuz graphicsPuz) {
+
 		ResourceUtils.spritePlayer = new ArrayList<>();
-		double prop = (double) 1080 / 120;
 
-		Bitmap sprite01 = graphicsPuz.newSprite(ResourceUtils.textureAtlas, 0, 0, 100, 120);
-		Bitmap sprite02 = graphicsPuz.newSprite(ResourceUtils.textureAtlas, 100, 0, 100, 120);
-		Bitmap sprite03 = graphicsPuz.newSprite(ResourceUtils.textureAtlas, 200, 0, 100, 120);
+		ResourceUtils.spritePlayer.add(graphicsPuz.newSprite(ResourceUtils.textureAtlas, 96, 0, 24, 24));
+		ResourceUtils.spritePlayer.add(graphicsPuz.newSprite(ResourceUtils.textureAtlas, 120, 0, 24, 24));
+		ResourceUtils.spritePlayer.add(graphicsPuz.newSprite(ResourceUtils.textureAtlas, 144, 0, 24, 24));
+		ResourceUtils.spritePlayer.add(graphicsPuz.newSprite(ResourceUtils.textureAtlas, 168, 0, 24, 24));
+		ResourceUtils.spritePlayer.add(graphicsPuz.newSprite(ResourceUtils.textureAtlas, 192, 0, 24, 24));
+		ResourceUtils.spritePlayer.add(graphicsPuz.newSprite(ResourceUtils.textureAtlas, 216, 0, 24, 24));
 
-		Bitmap sprite1 = Bitmap.createScaledBitmap(sprite01, (int)(sprite01.getWidth() * (prop/3)), (int)(sprite01.getHeight() * (prop/3)), true);
-		Bitmap sprite2 = Bitmap.createScaledBitmap(sprite02, (int)(sprite02.getWidth() * (prop/3)), (int)(sprite02.getHeight() * (prop/3)), true);
-		Bitmap sprite3 = Bitmap.createScaledBitmap(sprite03, (int)(sprite03.getWidth() * (prop/3)), (int)(sprite03.getHeight() * (prop/3)), true);
-
-		ResourceUtils.spritePlayer.add(sprite1);
-		ResourceUtils.spritePlayer.add(sprite2);
-		ResourceUtils.spritePlayer.add(sprite3);
-
-/*		ResourceUtils.spritePlayer.add(graphicsPuz.newSprite(ResourceUtils.textureAtlas, 0, 0, 100, 120));
-		ResourceUtils.spritePlayer.add(graphicsPuz.newSprite(ResourceUtils.textureAtlas, 100, 0, 100, 120));
-		ResourceUtils.spritePlayer.add(graphicsPuz.newSprite(ResourceUtils.textureAtlas, 200, 0, 100, 120));*/
 	}
 
 	private void loadTexture(GraphicsPuz graphicsPuz) {
@@ -40,11 +36,25 @@ public class LoaderAssets {
 	}
 
 	private void loadBackground(GraphicsPuz graphicsPuz) {
-		//ResourceUtils.background = graphicsPuz.newTexture("background.png");
+		ResourceUtils.background = graphicsPuz.newTexture("background.png");
+	}
 
-		Bitmap background = graphicsPuz.newTexture("background.png");
-		double prop = (double) 1080 / background.getHeight();
-		ResourceUtils.background = Bitmap.createScaledBitmap(background, (int)(background.getWidth() * (prop)), (int)(background.getHeight() * (prop)), true);
+	private void loadTextureJump(GraphicsPuz graphicsPuz) {
+		ResourceUtils.jumpCorgi = graphicsPuz.newSprite(ResourceUtils.textureAtlas, 240, 0, 24, 24);
+	}
+
+
+	private void loadTFireplace(GraphicsPuz graphicsPuz) {
+		ResourceUtils.fireplaceAtlas = graphicsPuz.newTexture("fireplace.png");
+	}
+
+	private void loadSpriteFireplace(GraphicsPuz graphicsPuz) {
+
+		ResourceUtils.spriteFireplace = new ArrayList<>();
+
+		ResourceUtils.spriteFireplace.add(graphicsPuz.newSprite(ResourceUtils.fireplaceAtlas, 0, 0, 128, 135));
+		ResourceUtils.spriteFireplace.add(graphicsPuz.newSprite(ResourceUtils.fireplaceAtlas, 128, 0, 128, 135));
+		ResourceUtils.spriteFireplace.add(graphicsPuz.newSprite(ResourceUtils.fireplaceAtlas, 256, 0, 128, 135));
 
 	}
 

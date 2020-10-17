@@ -44,10 +44,6 @@ public class GameScene extends ScenePuz {
 
     @Override
     public void drawing() {
-
-        graphicsPuz.clearScene(Color.BLACK);
-        graphicsPuz.drawText("Игровой экран", 400, 300, Color.GREEN, 160, null);
-
         if (gameState == GameState.READE) {
             drawingStateReady();
         }
@@ -60,7 +56,6 @@ public class GameScene extends ScenePuz {
         if (gameState == GameState.END) {
             drawingStateEnd();
         }
-
     }
 
     private void updateStateReady() {
@@ -71,7 +66,7 @@ public class GameScene extends ScenePuz {
 
     private void drawingStateReady() {
         graphicsPuz.clearScene(Color.BLACK);
-        graphicsPuz.drawText(corePuz.getString(R.string.are_you_ready), 600, 300, Color.BLUE, 160, null);
+        graphicsPuz.drawText(corePuz.getString(R.string.are_you_ready), 75, 35, Color.BLUE, 20, null);
 
     }
 
@@ -90,8 +85,12 @@ public class GameScene extends ScenePuz {
         graphicsPuz.clearScene(Color.BLACK);
         gameManager.drawing(corePuz, graphicsPuz);
 
+        if (corePuz.getTouchListenerPuz().getTouchUp(0, sceneHeight, sceneWidth, sceneHeight)) {
+            gameManager.getCorgi().doJump(4);
+        }
+
         //----------Debug FPS------------
-        graphicsPuz.drawText("FPS " + drawings, 150, 150, Color.WHITE, 70, null);
+        graphicsPuz.drawText("FPS " + drawings, 20, 20, Color.WHITE, 9, null);
         updates++;
         if (System.currentTimeMillis() - timer > 1000) {
             Date date = new Date();
