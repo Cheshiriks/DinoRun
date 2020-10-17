@@ -10,8 +10,8 @@ public abstract class ObjectPuz {
     protected int minScreenY;
 
     protected int x;
-    protected int y;
-    protected int speed;
+    protected double y;
+    protected double speed;
 
     protected Rect hitBox;
     protected double radius;
@@ -36,11 +36,11 @@ public abstract class ObjectPuz {
         return x;
     }
 
-    public int getY() {
+    public double getY() {
         return y;
     }
 
-    public int getSpeed() {
+    public double getSpeed() {
         return speed;
     }
 

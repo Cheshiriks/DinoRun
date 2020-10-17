@@ -14,8 +14,8 @@ import java.security.PublicKey;
 
 public class CorePuz extends AppCompatActivity {
 
-    private final float FRAME_BUFFER_WIDTH = 1920;
-    private final float FRAME_BUFFER_HEIGHT = 1080;
+    private final float FRAME_BUFFER_WIDTH = 240;
+    private final float FRAME_BUFFER_HEIGHT = 135;
 
     private LoopPuz loopPuz;
     private GraphicsPuz graphicsPuz;
@@ -31,7 +31,6 @@ public class CorePuz extends AppCompatActivity {
 
     private boolean stateOnPause;
     private boolean stateOnResume;
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -108,14 +107,5 @@ public class CorePuz extends AppCompatActivity {
         scenePuz.update();
         this.scenePuz = scenePuz;
     }
-
-    public float getSceneWidth() {
-        return sceneWidth;
-    }
-
-    public float getSceneHeight() {
-        return sceneHeight;
-    }
-
 
 }

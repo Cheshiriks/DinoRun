@@ -54,8 +54,8 @@ public class GraphicsPuz implements GraphicsPuzService {
     }
 
     @Override
-    public void drawTexture(Bitmap textureGame, int x, int y) {
-        canvasGame.drawBitmap(textureGame, x, y, null);
+    public void drawTexture(Bitmap textureGame, int x, double y) {
+        canvasGame.drawBitmap(textureGame, x, (float)y, null);
     }
 
     @Override
