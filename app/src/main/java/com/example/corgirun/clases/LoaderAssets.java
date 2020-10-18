@@ -8,11 +8,14 @@ import java.util.ArrayList;
 public class LoaderAssets {
 
 	public LoaderAssets(CorePuz corePuz, GraphicsPuz graphicsPuz) {
+
 		loadTexture(graphicsPuz);
 		loadSpritePlayer(graphicsPuz);
+		loadTextureJump(graphicsPuz);
+		loadTextureDuckDown(graphicsPuz);
+
 		loadBackground(graphicsPuz);
 		loadMenu(graphicsPuz);
-		loadTextureJump(graphicsPuz);
 
 		loadFireplace(graphicsPuz);
 		loadSpriteFireplace(graphicsPuz);
@@ -22,6 +25,10 @@ public class LoaderAssets {
 
 		loadFire(graphicsPuz);
 		loadSpriteFire(graphicsPuz);
+	}
+
+	private void loadTexture(GraphicsPuz graphicsPuz) {
+		ResourceUtils.textureAtlas = graphicsPuz.newTexture("texture_atlas.png");
 	}
 
 	private void loadSpritePlayer(GraphicsPuz graphicsPuz) {
@@ -37,16 +44,25 @@ public class LoaderAssets {
 
 	}
 
-	private void loadTexture(GraphicsPuz graphicsPuz) {
-		ResourceUtils.textureAtlas = graphicsPuz.newTexture("texture_atlas.png");
-	}
+	private void loadTextureDuckDown(GraphicsPuz graphicsPuz) {
 
-	private void loadBackground(GraphicsPuz graphicsPuz) {
-		ResourceUtils.background = graphicsPuz.newTexture("background.png");
+		ResourceUtils.spriteDuckDown = new ArrayList<>();
+
+		ResourceUtils.spriteDuckDown.add(graphicsPuz.newSprite(ResourceUtils.textureAtlas, 432, 0, 24, 24));
+		ResourceUtils.spriteDuckDown.add(graphicsPuz.newSprite(ResourceUtils.textureAtlas, 456, 0, 24, 24));
+		ResourceUtils.spriteDuckDown.add(graphicsPuz.newSprite(ResourceUtils.textureAtlas, 480, 0, 24, 24));
+		ResourceUtils.spriteDuckDown.add(graphicsPuz.newSprite(ResourceUtils.textureAtlas, 504, 0, 24, 24));
+		ResourceUtils.spriteDuckDown.add(graphicsPuz.newSprite(ResourceUtils.textureAtlas, 528, 0, 24, 24));
+		ResourceUtils.spriteDuckDown.add(graphicsPuz.newSprite(ResourceUtils.textureAtlas, 552, 0, 24, 24));
+
 	}
 
 	private void loadTextureJump(GraphicsPuz graphicsPuz) {
 		ResourceUtils.jumpCorgi = graphicsPuz.newSprite(ResourceUtils.textureAtlas, 240, 0, 24, 24);
+	}
+
+	private void loadBackground(GraphicsPuz graphicsPuz) {
+		ResourceUtils.background = graphicsPuz.newTexture("background.png");
 	}
 
 //----загружаем камин----start
