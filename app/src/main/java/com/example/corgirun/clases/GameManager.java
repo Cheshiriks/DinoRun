@@ -27,7 +27,7 @@ public class GameManager {
 		this.maxScreenY = sceneHeight;
 		this.minScreenX = 0;
 		this.minScreenY = 0;
-		corgi = new Corgi(maxScreenX, maxScreenY, minScreenY);
+		corgi = new Corgi(corePuz, maxScreenX, maxScreenY, minScreenY);
 		background_1 = new Background(1, 0, 0, maxScreenX, maxScreenY);
 		background_2 = new Background(1, background_1.getWeight(), 0, maxScreenX, maxScreenY);
 		fireplace = new Fireplace(1, 144, 0, maxScreenX, maxScreenY);

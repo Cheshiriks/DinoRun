@@ -57,7 +57,7 @@ public class TouchListenerPuz implements View.OnTouchListener {
     }
 
     public boolean getTouchDown(int x, int y, int touchWidth, int touchHeight) {
-        if (isTouchUp) {
+        if (isTouchDown) {
             if (touchX >= x && touchX <= x+touchWidth-1 &&
                     touchY <=y && touchY >= y-(touchHeight-1)
             ) {

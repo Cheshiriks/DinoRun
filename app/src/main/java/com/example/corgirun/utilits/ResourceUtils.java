@@ -10,6 +10,7 @@ public class ResourceUtils {
 	public static Bitmap menu;
 
 	public static ArrayList<Bitmap> spritePlayer;
+	public static ArrayList<Bitmap> spriteDuckDown;
 	public static Bitmap jumpCorgi;
 
 	public static Bitmap fireplaceAtlas;

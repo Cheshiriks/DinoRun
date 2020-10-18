@@ -2,9 +2,9 @@
     <string name="app_name">CorgiRun</string>
 
     <string name="main_menu_app_name">Беги, Корги!</string>
-    <string name="main_menu_new_game">Новая игра</string>
-    <string name="main_menu_settings">Настройки</string>
-    <string name="main_menu_results">Результаты</string>
+    <string name="main_menu_new_game">НОВАЯ ИГРА</string>
+    <string name="main_menu_settings">НАСТРОЙКИ</string>
+    <string name="main_menu_results">РЕЗУЛЬТАТЫ</string>
 
     <string name="are_you_ready">Вы готовы?</string>
 </resources>

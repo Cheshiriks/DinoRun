@@ -85,10 +85,6 @@ public class GameScene extends ScenePuz {
         graphicsPuz.clearScene(Color.BLACK);
         gameManager.drawing(corePuz, graphicsPuz);
 
-        if (corePuz.getTouchListenerPuz().getTouchUp(0, sceneHeight, sceneWidth, sceneHeight)) {
-            gameManager.getCorgi().doJump(4);
-        }
-
         //----------Debug FPS------------
         graphicsPuz.drawText("FPS " + drawings, 20, 20, Color.WHITE, 12, null);
         updates++;
