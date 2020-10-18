@@ -1,6 +1,6 @@
 package com.example.corgirun.objects;
 
-import com.example.corgirun.clases.AnimationFireplace;
+import com.example.corgirun.objects.animation.AnimationFireplace;
 import com.example.corgirun.utilits.ResourceUtils;
 import com.example.puzzle.GraphicsPuz;
 import com.example.puzzle.ObjectPuz;
@@ -24,7 +24,8 @@ public class Fireplace extends ObjectPuz {
 				speed,
 				ResourceUtils.spriteFireplace.get(0),
 				ResourceUtils.spriteFireplace.get(1),
-				ResourceUtils.spriteFireplace.get(2)
+				ResourceUtils.spriteFireplace.get(2),
+				ResourceUtils.spriteFireplace.get(3)
 		);
 	}
 

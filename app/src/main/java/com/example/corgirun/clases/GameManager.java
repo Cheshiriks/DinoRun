@@ -2,7 +2,9 @@ package com.example.corgirun.clases;
 
 import com.example.corgirun.objects.Background;
 import com.example.corgirun.objects.Corgi;
+import com.example.corgirun.objects.Fire;
 import com.example.corgirun.objects.Fireplace;
+import com.example.corgirun.objects.Picture;
 import com.example.puzzle.CorePuz;
 import com.example.puzzle.GraphicsPuz;
 
@@ -17,6 +19,8 @@ public class GameManager {
 	Background background_1;
 	Background background_2;
 	Fireplace fireplace;
+	Picture picture;
+	Fire fire;
 
 	public GameManager(CorePuz corePuz, int sceneWidth, int sceneHeight) {
 		this.maxScreenX = sceneWidth;
@@ -26,13 +30,17 @@ public class GameManager {
 		corgi = new Corgi(maxScreenX, maxScreenY, minScreenY);
 		background_1 = new Background(1, 0, 0, maxScreenX, maxScreenY);
 		background_2 = new Background(1, background_1.getWeight(), 0, maxScreenX, maxScreenY);
-		fireplace = new Fireplace(1, 145, 0, maxScreenX, maxScreenY);
+		fireplace = new Fireplace(1, 144, 0, maxScreenX, maxScreenY);
+		picture = new Picture(1, 96, 0, maxScreenX, maxScreenY);
+		fire = new Fire(1, 432, 0, maxScreenX, maxScreenY);
 	}
 
 	public void update() {
 		background_1.update();
 		background_2.update();
 		fireplace.update();
+		picture.update();
+		fire.update();
 		corgi.update();
 	}
 
@@ -40,6 +48,8 @@ public class GameManager {
 		background_1.drawing(graphicsPuz);
 		background_2.drawing(graphicsPuz);
 		fireplace.drawing(graphicsPuz);
+		picture.drawing(graphicsPuz);
+		fire.drawing(graphicsPuz);
 		corgi.drawing(graphicsPuz);
 	}
 

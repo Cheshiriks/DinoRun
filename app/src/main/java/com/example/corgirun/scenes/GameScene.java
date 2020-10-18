@@ -90,7 +90,7 @@ public class GameScene extends ScenePuz {
         }
 
         //----------Debug FPS------------
-        graphicsPuz.drawText("FPS " + drawings, 20, 20, Color.WHITE, 9, null);
+        graphicsPuz.drawText("FPS " + drawings, 20, 20, Color.WHITE, 12, null);
         updates++;
         if (System.currentTimeMillis() - timer > 1000) {
             Date date = new Date();
