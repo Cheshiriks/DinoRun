@@ -1,5 +1,8 @@
 package com.example.corgirun.clases;
 
+import android.os.Build.VERSION;
+import android.os.Build.VERSION_CODES;
+import com.example.corgirun.R;
 import com.example.puzzle.CorePuz;
 import com.example.puzzle.GraphicsPuz;
 import com.example.corgirun.utilits.ResourceUtils;
@@ -7,7 +10,11 @@ import java.util.ArrayList;
 
 public class LoaderAssets {
 
+	private CorePuz corePuz;
+
 	public LoaderAssets(CorePuz corePuz, GraphicsPuz graphicsPuz) {
+
+		this.corePuz = corePuz;
 
 		loadTexture(graphicsPuz);
 		loadSpritePlayer(graphicsPuz);
@@ -25,6 +32,8 @@ public class LoaderAssets {
 
 		loadFire(graphicsPuz);
 		loadSpriteFire(graphicsPuz);
+
+		loadOther();
 	}
 
 	private void loadTexture(GraphicsPuz graphicsPuz) {
@@ -111,5 +120,11 @@ public class LoaderAssets {
 		ResourceUtils.menu = graphicsPuz.newTexture("menu.png");
 	}
 	//----загружаем меню----end
+
+	private void loadOther() {
+		if (VERSION.SDK_INT >= VERSION_CODES.O) {
+			ResourceUtils.menuFont = corePuz.getResources().getFont(R.font.thintel);
+		}
+	}
 
 }

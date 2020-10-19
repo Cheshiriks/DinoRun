@@ -4,6 +4,7 @@ import android.graphics.Color;
 
 import com.example.corgirun.R;
 import com.example.corgirun.clases.GameManager;
+import com.example.corgirun.utilits.ResourceUtils;
 import com.example.puzzle.CorePuz;
 import com.example.puzzle.ScenePuz;
 import java.util.Date;
@@ -86,7 +87,7 @@ public class GameScene extends ScenePuz {
         gameManager.drawing(corePuz, graphicsPuz);
 
         //----------Debug FPS------------
-        graphicsPuz.drawText("FPS " + drawings, 20, 20, Color.WHITE, 12, null);
+        graphicsPuz.drawText("FPS " + drawings, 20, 20, Color.WHITE, 16, ResourceUtils.menuFont);
         updates++;
         if (System.currentTimeMillis() - timer > 1000) {
             Date date = new Date();
