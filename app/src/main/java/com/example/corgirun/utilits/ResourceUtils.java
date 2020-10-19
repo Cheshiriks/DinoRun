@@ -1,6 +1,7 @@
 package com.example.corgirun.utilits;
 
 import android.graphics.Bitmap;
+import android.graphics.Typeface;
 import java.util.ArrayList;
 
 public class ResourceUtils {
@@ -21,5 +22,7 @@ public class ResourceUtils {
 
 	public static Bitmap fireAtlas;
 	public static ArrayList<Bitmap> spriteFire;
+
+	public static Typeface menuFont;
 
 }
