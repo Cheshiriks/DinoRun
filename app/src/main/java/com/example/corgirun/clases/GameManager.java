@@ -1,6 +1,7 @@
 package com.example.corgirun.clases;
 
 import com.example.corgirun.objects.Background;
+import com.example.corgirun.objects.ButtonPause;
 import com.example.corgirun.objects.Corgi;
 import com.example.corgirun.objects.Fire;
 import com.example.corgirun.objects.Fireplace;
@@ -22,6 +23,8 @@ public class GameManager {
 	Picture picture;
 	Fire fire;
 
+	ButtonPause buttonPause;
+
 	public GameManager(CorePuz corePuz, int sceneWidth, int sceneHeight) {
 		this.maxScreenX = sceneWidth;
 		this.maxScreenY = sceneHeight;
@@ -33,6 +36,8 @@ public class GameManager {
 		fireplace = new Fireplace(1, 144, 0, maxScreenX, maxScreenY);
 		picture = new Picture(1, 96, 0, maxScreenX, maxScreenY);
 		fire = new Fire(1, 432, 0, maxScreenX, maxScreenY);
+
+		buttonPause = new ButtonPause(corePuz, 0, 0);
 	}
 
 	public void update() {
@@ -41,6 +46,9 @@ public class GameManager {
 		fireplace.update();
 		picture.update();
 		fire.update();
+
+		buttonPause.update();
+
 		corgi.update();
 	}
 
@@ -50,19 +58,14 @@ public class GameManager {
 		fireplace.drawing(graphicsPuz);
 		picture.drawing(graphicsPuz);
 		fire.drawing(graphicsPuz);
+
+		buttonPause.drawing(graphicsPuz);
+
 		corgi.drawing(graphicsPuz);
 	}
 
-	public Corgi getCorgi() {
-		return corgi;
-	}
-
-	public Background getBackground_1() {
-		return background_1;
-	}
-
-	public Background getBackground_2() {
-		return background_2;
+	public ButtonPause getButtonPause() {
+		return buttonPause;
 	}
 
 }

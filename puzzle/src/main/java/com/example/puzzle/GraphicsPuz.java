@@ -70,7 +70,7 @@ public class GraphicsPuz implements GraphicsPuzService {
 
     @Override
     public Bitmap newTexture(String fileName) {
-        InputStream inputStream = null;
+        InputStream inputStream;
         try {
             inputStream = assetManagerGame.open(fileName);
             textureGame = BitmapFactory.decodeStream(inputStream);

@@ -33,7 +33,9 @@ public class LoaderAssets {
 		loadFire(graphicsPuz);
 		loadSpriteFire(graphicsPuz);
 
-		loadOther();
+		loadButton(graphicsPuz);
+
+		loadOther(graphicsPuz);
 	}
 
 	private void loadTexture(GraphicsPuz graphicsPuz) {
@@ -121,7 +123,29 @@ public class LoaderAssets {
 	}
 	//----загружаем меню----end
 
-	private void loadOther() {
+	private void loadButton(GraphicsPuz graphicsPuz) {
+
+		ResourceUtils.buttPauseAtlas = graphicsPuz.newTexture("butt_pause.png");
+
+		ResourceUtils.buttPause = new ArrayList<>();
+		ResourceUtils.buttPause.add(graphicsPuz.newSprite(ResourceUtils.buttPauseAtlas, 0, 0, 20, 20));
+		ResourceUtils.buttPause.add(graphicsPuz.newSprite(ResourceUtils.buttPauseAtlas, 0, 20, 20, 20));
+
+		ResourceUtils.buttonsPauseAtlas = graphicsPuz.newTexture("butt_menu_pause.png");
+
+		ResourceUtils.buttPauseContinue = new ArrayList<>();
+		ResourceUtils.buttPauseContinue.add(graphicsPuz.newSprite(ResourceUtils.buttonsPauseAtlas, 1, 1, 58, 15));
+		ResourceUtils.buttPauseContinue.add(graphicsPuz.newSprite(ResourceUtils.buttonsPauseAtlas, 65, 1, 58, 15));
+		ResourceUtils.buttPauseExit = new ArrayList<>();
+		ResourceUtils.buttPauseExit.add(graphicsPuz.newSprite(ResourceUtils.buttonsPauseAtlas, 1, 20, 58, 15));
+		ResourceUtils.buttPauseExit.add(graphicsPuz.newSprite(ResourceUtils.buttonsPauseAtlas, 65, 20, 58, 15));
+
+	}
+
+	private void loadOther(GraphicsPuz graphicsPuz) {
+
+		ResourceUtils.backPause = graphicsPuz.newTexture("back_pause.png");
+
 		if (VERSION.SDK_INT >= VERSION_CODES.O) {
 			ResourceUtils.menuFont = corePuz.getResources().getFont(R.font.thintel);
 		}

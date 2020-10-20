@@ -4,6 +4,7 @@ import android.graphics.Color;
 
 import com.example.corgirun.R;
 import com.example.corgirun.clases.GameManager;
+import com.example.corgirun.clases.PauseManager;
 import com.example.corgirun.utilits.ResourceUtils;
 import com.example.puzzle.CorePuz;
 import com.example.puzzle.ScenePuz;
@@ -20,11 +21,13 @@ public class GameScene extends ScenePuz {
 
     GameState gameState;
     GameManager gameManager;
+    PauseManager pauseManager;
 
     public GameScene(CorePuz corePuz) {
         super(corePuz);
         gameState = GameState.READE;
         gameManager = new GameManager(corePuz, sceneWidth, sceneHeight);
+        pauseManager = new PauseManager(corePuz, sceneWidth, sceneHeight);
     }
 
     @Override
@@ -72,6 +75,9 @@ public class GameScene extends ScenePuz {
     }
 
     private void updateStateRunning() {
+        if (gameManager.getButtonPause().isTouch(corePuz)) {
+            gameState = GameState.PAUSE;
+        }
         gameManager.update();
     }
 
@@ -87,7 +93,7 @@ public class GameScene extends ScenePuz {
         gameManager.drawing(corePuz, graphicsPuz);
 
         //----------Debug FPS------------
-        graphicsPuz.drawText("FPS " + drawings, 20, 20, Color.WHITE, 16, ResourceUtils.menuFont);
+        graphicsPuz.drawText("FPS " + drawings, 30, 15, Color.WHITE, 16, ResourceUtils.menuFont);
         updates++;
         if (System.currentTimeMillis() - timer > 1000) {
             Date date = new Date();
@@ -101,11 +107,18 @@ public class GameScene extends ScenePuz {
     }
 
     private void updateStatePause() {
-
+        if (pauseManager.getButtonPauseContinue().isTouch(corePuz)) {
+            gameState = GameState.RUNNING;
+        }
+        if (pauseManager.getButtonPauseExit().isTouch(corePuz)) {
+            corePuz.setScene(new MainMenuScene(corePuz));
+        }
+        pauseManager.update();
     }
 
     private void drawingStatePause() {
-
+        graphicsPuz.drawTexture(ResourceUtils.backPause, 76, 42);
+        pauseManager.drawing(corePuz, graphicsPuz);
     }
 
     private void updateStateEnd() {
