@@ -11,10 +11,10 @@ public class Corgi extends ObjectPuz {
 	final double GRAVITY = -0.15;
 	final int MAX_SPEED = 15;
 	final int MIN_SPEED = 1;
+	final private CorePuz corePuz;
 	AnimationGamePuz animationSpriteCorgi;
 	boolean jump;
 	boolean duckDown;
-	private CorePuz corePuz;
 
 	public Corgi(CorePuz corePuz, int maxScreenX, int maxScreenY, int minScreenY) {
 

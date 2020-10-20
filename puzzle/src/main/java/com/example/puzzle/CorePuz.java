@@ -3,14 +3,10 @@ package com.example.puzzle;
 import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.view.Display;
 import android.view.WindowManager;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
-import java.security.PublicKey;
 
 public class CorePuz extends AppCompatActivity {
 

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public class ResourceUtils {
 
+	//картинки
 	public static Bitmap textureAtlas;
 	public static Bitmap background;
 	public static Bitmap menu;
@@ -23,6 +24,17 @@ public class ResourceUtils {
 	public static Bitmap fireAtlas;
 	public static ArrayList<Bitmap> spriteFire;
 
+	public static Bitmap buttPauseAtlas;
+	public static ArrayList<Bitmap> buttPause;
+
+	public static Bitmap buttonsPauseAtlas;
+	public static ArrayList<Bitmap> buttPauseContinue;
+	public static ArrayList<Bitmap> buttPauseExit;
+
+
+	public static Bitmap backPause;
+
+	//шрифты
 	public static Typeface menuFont;
 
 }
