@@ -6,6 +6,7 @@ import com.example.corgirun.objects.Corgi;
 import com.example.corgirun.objects.Fire;
 import com.example.corgirun.objects.Fireplace;
 import com.example.corgirun.objects.Picture;
+import com.example.corgirun.objects.Witch;
 import com.example.puzzle.CorePuz;
 import com.example.puzzle.GraphicsPuz;
 
@@ -16,7 +17,10 @@ public class GameManager {
 	private int minScreenY;
 	private int minScreenX;
 
+	private double distance;
+
 	Corgi corgi;
+	Witch witch;
 	Background background_1;
 	Background background_2;
 	Fireplace fireplace;
@@ -30,7 +34,9 @@ public class GameManager {
 		this.maxScreenY = sceneHeight;
 		this.minScreenX = 0;
 		this.minScreenY = 0;
+		distance = 0;
 		corgi = new Corgi(corePuz, maxScreenX, maxScreenY, minScreenY);
+		witch = new Witch(1.5, 0.1, maxScreenX, 60, maxScreenX, maxScreenY);
 		background_1 = new Background(1, 0, 0, maxScreenX, maxScreenY);
 		background_2 = new Background(1, background_1.getWeight(), 0, maxScreenX, maxScreenY);
 		fireplace = new Fireplace(1, 144, 0, maxScreenX, maxScreenY);
@@ -49,7 +55,10 @@ public class GameManager {
 
 		buttonPause.update();
 
+		witch.update();
 		corgi.update();
+
+		distance += background_1.getSpeed() / 10;
 	}
 
 	public void drawing(CorePuz corePuz, GraphicsPuz graphicsPuz) {
@@ -61,11 +70,16 @@ public class GameManager {
 
 		buttonPause.drawing(graphicsPuz);
 
+		witch.drawing(graphicsPuz);
 		corgi.drawing(graphicsPuz);
 	}
 
 	public ButtonPause getButtonPause() {
 		return buttonPause;
+	}
+
+	public double getDistance() {
+		return distance;
 	}
 
 }

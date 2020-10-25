@@ -9,7 +9,7 @@ public abstract class ObjectPuz {
     protected int minScreenX;
     protected int minScreenY;
 
-    protected int x;
+    protected double x;
     protected double y;
     protected double speed;
 
@@ -32,7 +32,7 @@ public abstract class ObjectPuz {
         return minScreenY;
     }
 
-    public int getX() {
+    public double getX() {
         return x;
     }
 
@@ -69,15 +69,15 @@ public abstract class ObjectPuz {
         this.minScreenY = minScreenY;
     }
 
-    public void setX(int x) {
+    public void setX(double x) {
         this.x = x;
     }
 
-    public void setY(int y) {
+    public void setY(double y) {
         this.y = y;
     }
 
-    public void setSpeed(int speed) {
+    public void setSpeed(double speed) {
         this.speed = speed;
     }
 

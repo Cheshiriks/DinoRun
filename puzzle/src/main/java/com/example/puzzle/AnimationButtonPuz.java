@@ -22,7 +22,7 @@ public class AnimationButtonPuz {
 		sprite = sprite2;
 	}
 
-	public void drawingAnimation(GraphicsPuz graphicsPuz, int x, double y) {
+	public void drawingAnimation(GraphicsPuz graphicsPuz, double x, double y) {
 		graphicsPuz.drawTexture(sprite, x, y);
 	}
 

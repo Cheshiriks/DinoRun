@@ -3,7 +3,7 @@ package com.example.corgirun.objects.animation;
 import android.graphics.Bitmap;
 import com.example.puzzle.GraphicsPuz;
 
-public class AnimationPicture {
+public class AnimationWitch {
 
 	int countFrames;
 	int frames;
@@ -13,19 +13,19 @@ public class AnimationPicture {
 	Bitmap sprite1;
 	Bitmap sprite2;
 
-	public AnimationPicture(double speedAnimation, Bitmap sprite1, Bitmap sprite2) {
+	public AnimationWitch(double speedAnimation, Bitmap sprite1, Bitmap sprite2) {
 		this.speedAnimation = speedAnimation;
 		this.sprite1 = sprite1;
 		this.sprite2 = sprite2;
 		sprite = sprite1;
-		frames = 160;
+		frames = 170;
 	}
 
 	public void runAnimation() {
 		if (countFrames==0) {
 			sprite = sprite1;
 		}
-		if (countFrames==140) {
+		if (countFrames==150) {
 			sprite = sprite2;
 		}
 		countFrames++;
@@ -38,6 +38,5 @@ public class AnimationPicture {
 	public void drawingAnimation(GraphicsPuz graphicsPuz, double x, double y) {
 		graphicsPuz.drawTexture(sprite, x, y);
 	}
-
 
 }

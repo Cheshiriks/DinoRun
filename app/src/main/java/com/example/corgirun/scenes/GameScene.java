@@ -91,6 +91,7 @@ public class GameScene extends ScenePuz {
     private void drawingStateRunning() {
         graphicsPuz.clearScene(Color.BLACK);
         gameManager.drawing(corePuz, graphicsPuz);
+        graphicsPuz.drawText("HI  " + (int)gameManager.getDistance(), 180, 15, Color.WHITE, 16, ResourceUtils.menuFont);
 
         //----------Debug FPS------------
         graphicsPuz.drawText("FPS " + drawings, 30, 15, Color.WHITE, 16, ResourceUtils.menuFont);
@@ -98,7 +99,6 @@ public class GameScene extends ScenePuz {
         if (System.currentTimeMillis() - timer > 1000) {
             Date date = new Date();
             drawings = updates;
-            System.out.println("FPS " + updates);
             updates = 0;
             timer += 1000;
         }
