@@ -5,6 +5,7 @@ import com.example.corgirun.objects.ButtonPause;
 import com.example.corgirun.objects.Corgi;
 import com.example.corgirun.objects.Fire;
 import com.example.corgirun.objects.Fireplace;
+import com.example.corgirun.objects.Ghost;
 import com.example.corgirun.objects.Picture;
 import com.example.corgirun.objects.Witch;
 import com.example.puzzle.CorePuz;
@@ -21,6 +22,7 @@ public class GameManager {
 
 	Corgi corgi;
 	Witch witch;
+	Ghost ghost;
 	Background background_1;
 	Background background_2;
 	Fireplace fireplace;
@@ -37,6 +39,7 @@ public class GameManager {
 		distance = 0;
 		corgi = new Corgi(corePuz, maxScreenX, maxScreenY, minScreenY);
 		witch = new Witch(1.5, 0.1, maxScreenX, 60, maxScreenX, maxScreenY);
+		ghost = new Ghost(1.5, 0.1, maxScreenX+(maxScreenX/2), 80, maxScreenX, maxScreenY);
 		background_1 = new Background(1, 0, 0, maxScreenX, maxScreenY);
 		background_2 = new Background(1, background_1.getWeight(), 0, maxScreenX, maxScreenY);
 		fireplace = new Fireplace(1, 144, 0, maxScreenX, maxScreenY);
@@ -56,6 +59,7 @@ public class GameManager {
 		buttonPause.update();
 
 		witch.update();
+		ghost.update();
 		corgi.update();
 
 		distance += background_1.getSpeed() / 10;
@@ -71,6 +75,7 @@ public class GameManager {
 		buttonPause.drawing(graphicsPuz);
 
 		witch.drawing(graphicsPuz);
+		ghost.drawing(graphicsPuz);
 		corgi.drawing(graphicsPuz);
 	}
 
