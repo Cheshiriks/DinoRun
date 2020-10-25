@@ -18,7 +18,7 @@ public interface GraphicsPuzService {
     void drawText(String text, int x, int y, int color, int size, Typeface font);
 
     /** вставляем текстуру */
-    void drawTexture(Bitmap textureGame, int x, double y);
+    void drawTexture(Bitmap textureGame, double x, double y);
 
     /** получаем ширину FrameBuffer */
     int getWidthFrameBuffer();

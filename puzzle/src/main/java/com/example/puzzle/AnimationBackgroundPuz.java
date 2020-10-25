@@ -12,7 +12,7 @@ public class AnimationBackgroundPuz {
 		this.sprite = sprite;
 	}
 
-	public void drawingAnimation(GraphicsPuz graphicsPuz, int x, double y) {
+	public void drawingAnimation(GraphicsPuz graphicsPuz, double x, double y) {
 		graphicsPuz.drawTexture(sprite, x, y);
 	}
 

@@ -21,6 +21,8 @@ public class LoaderAssets {
 		loadTextureJump(graphicsPuz);
 		loadTextureDuckDown(graphicsPuz);
 
+		loadSpriteWitch(graphicsPuz);
+
 		loadBackground(graphicsPuz);
 		loadMenu(graphicsPuz);
 
@@ -70,6 +72,17 @@ public class LoaderAssets {
 
 	private void loadTextureJump(GraphicsPuz graphicsPuz) {
 		ResourceUtils.jumpCorgi = graphicsPuz.newSprite(ResourceUtils.textureAtlas, 240, 0, 24, 24);
+	}
+
+	private void loadSpriteWitch(GraphicsPuz graphicsPuz) {
+
+		ResourceUtils.witchAtlas = graphicsPuz.newTexture("witch_atlas.png");
+
+		ResourceUtils.spriteWitch = new ArrayList<>();
+
+		ResourceUtils.spriteWitch.add(graphicsPuz.newSprite(ResourceUtils.witchAtlas, 0, 0, 48, 48));
+		ResourceUtils.spriteWitch.add(graphicsPuz.newSprite(ResourceUtils.witchAtlas, 48, 0, 48, 48));
+
 	}
 
 	private void loadBackground(GraphicsPuz graphicsPuz) {
@@ -135,10 +148,10 @@ public class LoaderAssets {
 
 		ResourceUtils.buttPauseContinue = new ArrayList<>();
 		ResourceUtils.buttPauseContinue.add(graphicsPuz.newSprite(ResourceUtils.buttonsPauseAtlas, 1, 1, 58, 15));
-		ResourceUtils.buttPauseContinue.add(graphicsPuz.newSprite(ResourceUtils.buttonsPauseAtlas, 65, 1, 58, 15));
+		ResourceUtils.buttPauseContinue.add(graphicsPuz.newSprite(ResourceUtils.buttonsPauseAtlas, 64, 1, 58, 15));
 		ResourceUtils.buttPauseExit = new ArrayList<>();
 		ResourceUtils.buttPauseExit.add(graphicsPuz.newSprite(ResourceUtils.buttonsPauseAtlas, 1, 20, 58, 15));
-		ResourceUtils.buttPauseExit.add(graphicsPuz.newSprite(ResourceUtils.buttonsPauseAtlas, 65, 20, 58, 15));
+		ResourceUtils.buttPauseExit.add(graphicsPuz.newSprite(ResourceUtils.buttonsPauseAtlas, 64, 20, 58, 15));
 
 	}
 
