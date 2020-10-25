@@ -21,7 +21,7 @@ public class LoaderAssets {
 		loadTextureJump(graphicsPuz);
 		loadTextureDuckDown(graphicsPuz);
 
-		loadSpriteWitch(graphicsPuz);
+		loadSpriteEnemies(graphicsPuz);
 
 		loadBackground(graphicsPuz);
 		loadMenu(graphicsPuz);
@@ -74,7 +74,7 @@ public class LoaderAssets {
 		ResourceUtils.jumpCorgi = graphicsPuz.newSprite(ResourceUtils.textureAtlas, 240, 0, 24, 24);
 	}
 
-	private void loadSpriteWitch(GraphicsPuz graphicsPuz) {
+	private void loadSpriteEnemies(GraphicsPuz graphicsPuz) {
 
 		ResourceUtils.witchAtlas = graphicsPuz.newTexture("witch_atlas.png");
 
@@ -83,13 +83,15 @@ public class LoaderAssets {
 		ResourceUtils.spriteWitch.add(graphicsPuz.newSprite(ResourceUtils.witchAtlas, 0, 0, 48, 48));
 		ResourceUtils.spriteWitch.add(graphicsPuz.newSprite(ResourceUtils.witchAtlas, 48, 0, 48, 48));
 
+		ResourceUtils.spriteGhost = graphicsPuz.newTexture("ghost.png");
+
 	}
 
 	private void loadBackground(GraphicsPuz graphicsPuz) {
 		ResourceUtils.background = graphicsPuz.newTexture("background.png");
 	}
 
-//----загружаем камин----start
+  //----загружаем камин----start
 	private void loadFireplace(GraphicsPuz graphicsPuz) {
 		ResourceUtils.fireplaceAtlas = graphicsPuz.newTexture("fireplace.png");
 	}

@@ -17,6 +17,7 @@ public class ResourceUtils {
 
 	public static Bitmap witchAtlas;
 	public static ArrayList<Bitmap> spriteWitch;
+	public static Bitmap spriteGhost;
 
 	public static Bitmap fireplaceAtlas;
 	public static ArrayList<Bitmap> spriteFireplace;
