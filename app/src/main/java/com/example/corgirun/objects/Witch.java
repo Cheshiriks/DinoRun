@@ -39,7 +39,8 @@ public class Witch extends ObjectPuz {
 
 		x -= speed;
 		if (x <= -weight) {
-			x = 240;
+			x = 2*maxScreenX;
+			speed = 0;
 		}
 		animationWitch.runAnimation();
 	}

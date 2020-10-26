@@ -38,7 +38,8 @@ public class Ghost extends ObjectPuz {
 
 		x -= speed;
 		if (x <= -weight) {
-			x = maxScreenX + maxScreenX/2;
+			x = 2*maxScreenX;
+			speed = 0;
 		}
 		animationGhost.runAnimation();
 	}
