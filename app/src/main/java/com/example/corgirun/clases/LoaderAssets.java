@@ -82,6 +82,8 @@ public class LoaderAssets {
 
 		ResourceUtils.spriteWitch.add(graphicsPuz.newSprite(ResourceUtils.witchAtlas, 0, 0, 48, 48));
 		ResourceUtils.spriteWitch.add(graphicsPuz.newSprite(ResourceUtils.witchAtlas, 48, 0, 48, 48));
+		ResourceUtils.spriteWitch.add(graphicsPuz.newSprite(ResourceUtils.witchAtlas, 0, 48, 48, 48));
+		ResourceUtils.spriteWitch.add(graphicsPuz.newSprite(ResourceUtils.witchAtlas, 48, 48, 48, 48));
 
 		ResourceUtils.spriteGhost = graphicsPuz.newTexture("ghost.png");
 
