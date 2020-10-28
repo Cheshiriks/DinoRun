@@ -41,7 +41,6 @@ public class Ghost extends ObjectPuz {
 			x = 2*maxScreenX;
 			speed = 0;
 		}
-		animationGhost.runAnimation();
 	}
 
 	public void drawing(GraphicsPuz graphicsPuz) {

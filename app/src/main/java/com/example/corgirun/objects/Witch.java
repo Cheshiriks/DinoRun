@@ -1,5 +1,6 @@
 package com.example.corgirun.objects;
 
+import com.example.corgirun.clases.Type;
 import com.example.corgirun.objects.animation.AnimationWitch;
 import com.example.corgirun.utilits.ResourceUtils;
 import com.example.puzzle.GraphicsPuz;
@@ -13,9 +14,11 @@ public class Witch extends ObjectPuz {
 	private int weight;
 	private double speedY;
 	private double Yo;
+
+	private final Type type;
 	AnimationWitch animationWitch;
 
-	public Witch(double speedX, double speedY, double x, double y, int maxScreenX, int maxScreenY) {
+	public Witch(double speedX, double speedY, double x, double y, int maxScreenX, int maxScreenY, Type type) {
 		this.x = x;
 		this.y = y;
 		this.speed = speedX;
@@ -23,12 +26,24 @@ public class Witch extends ObjectPuz {
 		this.maxScreenX = maxScreenX;
 		this.maxScreenY = maxScreenY;
 		this.Yo = y;
+		this.type = type;
 		weight = ResourceUtils.spriteWitch.get(0).getWidth();
-		animationWitch = new AnimationWitch(
-				speed,
-				ResourceUtils.spriteWitch.get(0),
-				ResourceUtils.spriteWitch.get(1)
-		);
+		switch (type) {
+			case WITCH_RED:
+				animationWitch = new AnimationWitch(
+						speed,
+						ResourceUtils.spriteWitch.get(0),
+						ResourceUtils.spriteWitch.get(1)
+				);
+				break;
+			case WITCH_GREEN:
+				animationWitch = new AnimationWitch(
+						speed,
+						ResourceUtils.spriteWitch.get(2),
+						ResourceUtils.spriteWitch.get(3)
+				);
+				break;
+		}
 	}
 
 	public void update() {
@@ -39,7 +54,7 @@ public class Witch extends ObjectPuz {
 
 		x -= speed;
 		if (x <= -weight) {
-			x = 2*maxScreenX;
+			x = 2 * maxScreenX;
 			speed = 0;
 		}
 		animationWitch.runAnimation();

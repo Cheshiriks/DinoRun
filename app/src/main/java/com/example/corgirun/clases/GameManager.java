@@ -52,12 +52,12 @@ public class GameManager {
 		distance = 0;
 		corgi = new Corgi(corePuz, maxScreenX, maxScreenY, minScreenY);
 
-		witch = new Witch(0, 0.1, 2*maxScreenX, 60, maxScreenX, maxScreenY);
-		witch2 = new Witch(0, 0.1, 2*maxScreenX, 60, maxScreenX, maxScreenY);
+		witch = new Witch(0, 0.1, 2*maxScreenX, 60, maxScreenX, maxScreenY, Type.WITCH_RED);
+		witch2 = new Witch(0, 0.1, 2*maxScreenX, 60, maxScreenX, maxScreenY, Type.WITCH_GREEN);
 		ghost = new Ghost(0, 0.1, 2*maxScreenX, 80, maxScreenX, maxScreenY);
 		ghost2 = new Ghost(0, 0.1, 2*maxScreenX, 80, maxScreenX, maxScreenY);
-		witch3 = new Witch(0, 0.1, 2*maxScreenX, 60, maxScreenX, maxScreenY);
-		witch4 = new Witch(0, 0.1, 2*maxScreenX, 60, maxScreenX, maxScreenY);
+		witch3 = new Witch(0, 0.1, 2*maxScreenX, 60, maxScreenX, maxScreenY, Type.WITCH_RED);
+		witch4 = new Witch(0, 0.1, 2*maxScreenX, 60, maxScreenX, maxScreenY, Type.WITCH_GREEN);
 		ghost3 = new Ghost(0, 0.1, 2*maxScreenX, 80, maxScreenX, maxScreenY);
 		ghost4 = new Ghost(0, 0.1, 2*maxScreenX, 80, maxScreenX, maxScreenY);
 
@@ -83,6 +83,10 @@ public class GameManager {
 	}
 
 	public void update() {
+
+		generateEnemies(enemiesList, 1);
+		setSpeedGame(1);
+
 		background_1.update();
 		background_2.update();
 		fireplace.update();
@@ -104,7 +108,6 @@ public class GameManager {
 
 		distance += background_1.getSpeed() / 10;
 
-		generateEnemies(enemiesList);
 	}
 
 	public void drawing(CorePuz corePuz, GraphicsPuz graphicsPuz) {
@@ -136,7 +139,7 @@ public class GameManager {
 		return distance;
 	}
 
-	private void generateEnemies(ArrayList<ObjectPuz> enemiesList) {
+	private void generateEnemies(ArrayList<ObjectPuz> enemiesList, double speed) {
 
 		if (lastEnemy.getX() < 2*maxScreenX - randomDistance()) {
 
@@ -148,7 +151,7 @@ public class GameManager {
 			}
 
 			lastEnemy = enemiesList2.get(randomEnemy(enemiesList2.size() - 1));
-			lastEnemy.setSpeed(1.5);
+			lastEnemy.setSpeed(0.5 + speed);
 		}
 	}
 
@@ -158,6 +161,16 @@ public class GameManager {
 
 	private int randomEnemy(int max) {
 		return (int) (Math.random()*max);
+	}
+
+	private void setSpeedGame(double speed) {
+
+		background_1.setSpeed(speed);
+		background_2.setSpeed(speed);
+		fireplace.setSpeed(speed);
+		picture.setSpeed(speed);
+		fire.setSpeed(speed);
+
 	}
 
 }
