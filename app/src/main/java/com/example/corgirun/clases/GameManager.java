@@ -7,6 +7,7 @@ import com.example.corgirun.objects.Fire;
 import com.example.corgirun.objects.Fireplace;
 import com.example.corgirun.objects.Ghost;
 import com.example.corgirun.objects.Picture;
+import com.example.corgirun.objects.Slime;
 import com.example.corgirun.objects.Witch;
 import com.example.puzzle.CorePuz;
 import com.example.puzzle.GraphicsPuz;
@@ -31,7 +32,15 @@ public class GameManager {
 	Witch witch3;
 	Witch witch4;
 	Ghost ghost3;
-	Ghost ghost4;
+	Slime slime1;
+	Slime slime2;
+	Slime slime3;
+	Slime slime4;
+	Slime slime5;
+	Slime slime6;
+	Slime slime7;
+	Slime slime8;
+	Slime slime9;
 
 	Background background_1;
 	Background background_2;
@@ -54,12 +63,20 @@ public class GameManager {
 
 		witch = new Witch(0, 0.1, 2*maxScreenX, 60, maxScreenX, maxScreenY, Type.WITCH_RED);
 		witch2 = new Witch(0, 0.1, 2*maxScreenX, 60, maxScreenX, maxScreenY, Type.WITCH_GREEN);
-		ghost = new Ghost(0, 0.1, 2*maxScreenX, 80, maxScreenX, maxScreenY);
-		ghost2 = new Ghost(0, 0.1, 2*maxScreenX, 80, maxScreenX, maxScreenY);
 		witch3 = new Witch(0, 0.1, 2*maxScreenX, 60, maxScreenX, maxScreenY, Type.WITCH_RED);
 		witch4 = new Witch(0, 0.1, 2*maxScreenX, 60, maxScreenX, maxScreenY, Type.WITCH_GREEN);
+		ghost = new Ghost(0, 0.1, 2*maxScreenX, 80, maxScreenX, maxScreenY);
+		ghost2 = new Ghost(0, 0.1, 2*maxScreenX, 80, maxScreenX, maxScreenY);
 		ghost3 = new Ghost(0, 0.1, 2*maxScreenX, 80, maxScreenX, maxScreenY);
-		ghost4 = new Ghost(0, 0.1, 2*maxScreenX, 80, maxScreenX, maxScreenY);
+		slime1 = new Slime(0, 0.1, 2*maxScreenX, 91, maxScreenX, maxScreenY, Type.SLIME_GREEN);
+		slime2 = new Slime(0, 0.1, 2*maxScreenX, 91, maxScreenX, maxScreenY, Type.SLIME_GREEN);
+		slime3 = new Slime(0, 0.1, 2*maxScreenX, 91, maxScreenX, maxScreenY, Type.SLIME_GREEN);
+		slime4 = new Slime(0, 0.1, 2*maxScreenX, 91, maxScreenX, maxScreenY, Type.SLIME_BLUE);
+		slime5 = new Slime(0, 0.1, 2*maxScreenX, 91, maxScreenX, maxScreenY, Type.SLIME_BLUE);
+		slime6 = new Slime(0, 0.1, 2*maxScreenX, 91, maxScreenX, maxScreenY, Type.SLIME_BLUE);
+		slime7 = new Slime(0, 0.1, 2*maxScreenX, 91, maxScreenX, maxScreenY, Type.SLIME_PINK);
+		slime8 = new Slime(0, 0.1, 2*maxScreenX, 91, maxScreenX, maxScreenY, Type.SLIME_PINK);
+		slime9 = new Slime(0, 0.1, 2*maxScreenX, 91, maxScreenX, maxScreenY, Type.SLIME_PINK);
 
 		background_1 = new Background(1, 0, 0, maxScreenX, maxScreenY);
 		background_2 = new Background(1, background_1.getWeight(), 0, maxScreenX, maxScreenY);
@@ -70,13 +87,22 @@ public class GameManager {
 		buttonPause = new ButtonPause(corePuz, 0, 0);
 
 		enemiesList.add(witch);
+		enemiesList.add(slime4);
 		enemiesList.add(ghost);
+		enemiesList.add(slime7);
+		enemiesList.add(slime1);
 		enemiesList.add(witch2);
+		enemiesList.add(slime5);
+		enemiesList.add(slime8);
 		enemiesList.add(ghost2);
+		enemiesList.add(slime2);
 		enemiesList.add(witch3);
+		enemiesList.add(slime9);
+		enemiesList.add(slime6);
 		enemiesList.add(ghost3);
+		enemiesList.add(slime3);
 		enemiesList.add(witch4);
-		enemiesList.add(ghost4);
+		enemiesList.add(slime4);
 
 		lastEnemy = enemiesList.get(0);
 		lastEnemy.setSpeed(1.5);
@@ -97,12 +123,20 @@ public class GameManager {
 
 		witch.update();
 		witch2.update();
-		ghost.update();
-		ghost2.update();
 		witch3.update();
 		witch4.update();
+		ghost.update();
+		ghost2.update();
 		ghost3.update();
-		ghost4.update();
+		slime1.update();
+		slime2.update();
+		slime3.update();
+		slime4.update();
+		slime5.update();
+		slime6.update();
+		slime7.update();
+		slime8.update();
+		slime9.update();
 
 		corgi.update();
 
@@ -121,12 +155,20 @@ public class GameManager {
 
 		witch.drawing(graphicsPuz);
 		witch2.drawing(graphicsPuz);
-		ghost.drawing(graphicsPuz);
-		ghost2.drawing(graphicsPuz);
 		witch3.drawing(graphicsPuz);
 		witch4.drawing(graphicsPuz);
+		ghost.drawing(graphicsPuz);
+		ghost2.drawing(graphicsPuz);
 		ghost3.drawing(graphicsPuz);
-		ghost4.drawing(graphicsPuz);
+		slime1.drawing(graphicsPuz);
+		slime2.drawing(graphicsPuz);
+		slime3.drawing(graphicsPuz);
+		slime4.drawing(graphicsPuz);
+		slime5.drawing(graphicsPuz);
+		slime6.drawing(graphicsPuz);
+		slime7.drawing(graphicsPuz);
+		slime8.drawing(graphicsPuz);
+		slime9.drawing(graphicsPuz);
 
 		corgi.drawing(graphicsPuz);
 	}

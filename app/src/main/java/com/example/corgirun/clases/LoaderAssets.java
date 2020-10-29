@@ -79,11 +79,34 @@ public class LoaderAssets {
 		ResourceUtils.witchAtlas = graphicsPuz.newTexture("witch_atlas.png");
 
 		ResourceUtils.spriteWitch = new ArrayList<>();
-
 		ResourceUtils.spriteWitch.add(graphicsPuz.newSprite(ResourceUtils.witchAtlas, 0, 0, 48, 48));
 		ResourceUtils.spriteWitch.add(graphicsPuz.newSprite(ResourceUtils.witchAtlas, 48, 0, 48, 48));
 		ResourceUtils.spriteWitch.add(graphicsPuz.newSprite(ResourceUtils.witchAtlas, 0, 48, 48, 48));
 		ResourceUtils.spriteWitch.add(graphicsPuz.newSprite(ResourceUtils.witchAtlas, 48, 48, 48, 48));
+
+		ResourceUtils.slimeAtlas = graphicsPuz.newTexture("slime_atlas.png");
+
+		ResourceUtils.spriteSlime = new ArrayList<>();
+		ResourceUtils.spriteSlime.add(graphicsPuz.newSprite(ResourceUtils.slimeAtlas, 0, 0, 32, 32));
+		ResourceUtils.spriteSlime.add(graphicsPuz.newSprite(ResourceUtils.slimeAtlas, 32, 0, 32, 32));
+		ResourceUtils.spriteSlime.add(graphicsPuz.newSprite(ResourceUtils.slimeAtlas, 64, 0, 32, 32));
+		ResourceUtils.spriteSlime.add(graphicsPuz.newSprite(ResourceUtils.slimeAtlas, 96, 0, 32, 32));
+		ResourceUtils.spriteSlime.add(graphicsPuz.newSprite(ResourceUtils.slimeAtlas, 128, 0, 32, 32));
+		ResourceUtils.spriteSlime.add(graphicsPuz.newSprite(ResourceUtils.slimeAtlas, 160, 0, 32, 32));
+
+		ResourceUtils.spriteSlime.add(graphicsPuz.newSprite(ResourceUtils.slimeAtlas, 0, 32, 32, 32));
+		ResourceUtils.spriteSlime.add(graphicsPuz.newSprite(ResourceUtils.slimeAtlas, 32, 32, 32, 32));
+		ResourceUtils.spriteSlime.add(graphicsPuz.newSprite(ResourceUtils.slimeAtlas, 64, 32, 32, 32));
+		ResourceUtils.spriteSlime.add(graphicsPuz.newSprite(ResourceUtils.slimeAtlas, 96, 32, 32, 32));
+		ResourceUtils.spriteSlime.add(graphicsPuz.newSprite(ResourceUtils.slimeAtlas, 128, 32, 32, 32));
+		ResourceUtils.spriteSlime.add(graphicsPuz.newSprite(ResourceUtils.slimeAtlas, 160, 32, 32, 32));
+
+		ResourceUtils.spriteSlime.add(graphicsPuz.newSprite(ResourceUtils.slimeAtlas, 0, 64, 32, 32));
+		ResourceUtils.spriteSlime.add(graphicsPuz.newSprite(ResourceUtils.slimeAtlas, 32, 64, 32, 32));
+		ResourceUtils.spriteSlime.add(graphicsPuz.newSprite(ResourceUtils.slimeAtlas, 64, 64, 32, 32));
+		ResourceUtils.spriteSlime.add(graphicsPuz.newSprite(ResourceUtils.slimeAtlas, 96, 64, 32, 32));
+		ResourceUtils.spriteSlime.add(graphicsPuz.newSprite(ResourceUtils.slimeAtlas, 128, 64, 32, 32));
+		ResourceUtils.spriteSlime.add(graphicsPuz.newSprite(ResourceUtils.slimeAtlas, 160, 64, 32, 32));
 
 		ResourceUtils.spriteGhost = graphicsPuz.newTexture("ghost.png");
 
