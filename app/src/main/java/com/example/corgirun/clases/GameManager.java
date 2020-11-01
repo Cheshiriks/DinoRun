@@ -61,10 +61,10 @@ public class GameManager {
 		distance = 0;
 		corgi = new Corgi(corePuz, maxScreenX, maxScreenY, minScreenY);
 
-		witch = new Witch(0, 0.1, 2*maxScreenX, 60, maxScreenX, maxScreenY, Type.WITCH_RED);
-		witch2 = new Witch(0, 0.1, 2*maxScreenX, 60, maxScreenX, maxScreenY, Type.WITCH_GREEN);
-		witch3 = new Witch(0, 0.1, 2*maxScreenX, 60, maxScreenX, maxScreenY, Type.WITCH_RED);
-		witch4 = new Witch(0, 0.1, 2*maxScreenX, 60, maxScreenX, maxScreenY, Type.WITCH_GREEN);
+		witch = new Witch(0, 0.1, 2*maxScreenX, 64, maxScreenX, maxScreenY, Type.WITCH_RED);
+		witch2 = new Witch(0, 0.1, 2*maxScreenX, 64, maxScreenX, maxScreenY, Type.WITCH_GREEN);
+		witch3 = new Witch(0, 0.1, 2*maxScreenX, 64, maxScreenX, maxScreenY, Type.WITCH_RED);
+		witch4 = new Witch(0, 0.1, 2*maxScreenX, 64, maxScreenX, maxScreenY, Type.WITCH_GREEN);
 		ghost = new Ghost(0, 0.1, 2*maxScreenX, 80, maxScreenX, maxScreenY);
 		ghost2 = new Ghost(0, 0.1, 2*maxScreenX, 80, maxScreenX, maxScreenY);
 		ghost3 = new Ghost(0, 0.1, 2*maxScreenX, 80, maxScreenX, maxScreenY);
@@ -142,6 +142,17 @@ public class GameManager {
 
 		distance += background_1.getSpeed() / 10;
 
+		checkHit();
+
+	}
+
+	//Проверка столкновения игрока с объектами
+	private void checkHit() {
+		for (ObjectPuz enemy : enemiesList) {
+			if (CollisionDetect.collisionDetect(corgi, enemy)) {
+				corgi.setHP(corgi.getHP() - 1);
+			}
+		}
 	}
 
 	public void drawing(CorePuz corePuz, GraphicsPuz graphicsPuz) {
@@ -181,6 +192,7 @@ public class GameManager {
 		return distance;
 	}
 
+	//Определяем пора ли выпустить нового врага
 	private void generateEnemies(ArrayList<ObjectPuz> enemiesList, double speed) {
 
 		if (lastEnemy.getX() < 2*maxScreenX - randomDistance()) {
@@ -213,6 +225,10 @@ public class GameManager {
 		picture.setSpeed(speed);
 		fire.setSpeed(speed);
 
+	}
+
+	public Corgi getCorgi() {
+		return corgi;
 	}
 
 }

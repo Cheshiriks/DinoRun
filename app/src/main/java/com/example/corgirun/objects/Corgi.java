@@ -1,5 +1,6 @@
 package com.example.corgirun.objects;
 
+import android.graphics.Rect;
 import com.example.puzzle.AnimationGamePuz;
 import com.example.puzzle.CorePuz;
 import com.example.puzzle.GraphicsPuz;
@@ -15,6 +16,7 @@ public class Corgi extends ObjectPuz {
 	AnimationGamePuz animationSpriteCorgi;
 	boolean jump;
 	boolean duckDown;
+	private int HP;
 
 	public Corgi(CorePuz corePuz, int maxScreenX, int maxScreenY, int minScreenY) {
 
@@ -23,9 +25,15 @@ public class Corgi extends ObjectPuz {
 		x = 30;
 		y = 100;
 		speed = 0;
+		HP = 1;
+		weight = ResourceUtils.spritePlayer.get(0).getWidth();
+		height = ResourceUtils.spritePlayer.get(0).getHeight();
 		this.corePuz = corePuz;
 		this.maxScreenX = maxScreenX;
 		this.maxScreenY = maxScreenY;
+
+		radius = (ResourceUtils.spritePlayer.get(0).getHeight() - 8) / 2;
+
 		//this.maxScreenY = maxScreenY - ResourceUtils.spritePlayer.get(0).getHeight();
 		animationSpriteCorgi = new AnimationGamePuz(
 				speed,
@@ -86,6 +94,8 @@ public class Corgi extends ObjectPuz {
 			animationSpriteCorgi.runAnimationDuckDown();
 		}
 
+		hitBox = new Rect((int) x, (int) y, ResourceUtils.spritePlayer.get(0).getWidth(), ResourceUtils.spritePlayer.get(0).getHeight());
+
 	}
 
 	public void drawing(GraphicsPuz graphicsPuz) {
@@ -107,6 +117,18 @@ public class Corgi extends ObjectPuz {
 
 	public void stopDuckDown() {
 		duckDown = false;
+	}
+
+	public int getHP() {
+		return HP;
+	}
+
+	public void setHP(int HP) {
+		this.HP = HP;
+	}
+
+	public boolean isDuckDown() {
+		return duckDown;
 	}
 
 }

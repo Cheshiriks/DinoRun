@@ -16,6 +16,9 @@ public abstract class ObjectPuz {
     protected Rect hitBox;
     protected double radius;
 
+    protected int weight;
+    protected int height;
+
     public int getMaxScreenX() {
         return maxScreenX;
     }
@@ -52,6 +55,13 @@ public abstract class ObjectPuz {
         return radius;
     }
 
+    public int getWeight() {
+        return weight;
+    }
+
+    public int getHeight() {
+        return height;
+    }
 
     public void setMaxScreenX(int maxScreenX) {
         this.maxScreenX = maxScreenX;
@@ -88,4 +98,13 @@ public abstract class ObjectPuz {
     public void setRadius(double radius) {
         this.radius = radius;
     }
+
+    public void setWeight(int weight) {
+        this.weight = weight;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
 }

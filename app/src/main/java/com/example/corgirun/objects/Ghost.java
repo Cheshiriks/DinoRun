@@ -1,5 +1,6 @@
 package com.example.corgirun.objects;
 
+import android.graphics.Rect;
 import com.example.corgirun.objects.animation.AnimationGhost;
 import com.example.corgirun.utilits.ResourceUtils;
 import com.example.puzzle.GraphicsPuz;
@@ -10,7 +11,6 @@ public class Ghost extends ObjectPuz {
 	final int MAX_SPEED = 15;
 	final int MIN_SPEED = 1;
 
-	private int weight;
 	private double speedY;
 	private double Yo;
 	AnimationGhost animationGhost;
@@ -24,6 +24,8 @@ public class Ghost extends ObjectPuz {
 		this.maxScreenY = maxScreenY;
 		this.Yo = y;
 		weight = ResourceUtils.spriteGhost.getWidth();
+		height = ResourceUtils.spriteGhost.getHeight();
+		radius = ResourceUtils.spriteGhost.getHeight() / 2;
 		animationGhost = new AnimationGhost(
 				speed,
 				ResourceUtils.spriteGhost
@@ -32,7 +34,7 @@ public class Ghost extends ObjectPuz {
 
 	public void update() {
 		y += speedY;
-		if (y >= Yo + 3 || y == Yo) {
+		if (y >= Yo + 3 || y <= Yo) {
 			speedY *= -1;
 		}
 
@@ -41,6 +43,8 @@ public class Ghost extends ObjectPuz {
 			x = 2*maxScreenX;
 			speed = 0;
 		}
+
+		hitBox = new Rect((int) x, (int) y, weight, height);
 	}
 
 	public void drawing(GraphicsPuz graphicsPuz) {

@@ -78,6 +78,9 @@ public class GameScene extends ScenePuz {
         if (gameManager.getButtonPause().isTouch(corePuz)) {
             gameState = GameState.PAUSE;
         }
+        if (gameManager.getCorgi().getHP() <= 0) {
+            gameState = GameState.PAUSE;
+        }
         gameManager.update();
     }
 
