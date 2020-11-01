@@ -1,5 +1,6 @@
 package com.example.corgirun.objects;
 
+import android.graphics.Rect;
 import com.example.corgirun.clases.Type;
 import com.example.corgirun.objects.animation.AnimationSlime;
 import com.example.corgirun.objects.animation.AnimationWitch;
@@ -12,7 +13,6 @@ public class Slime extends ObjectPuz {
 	final int MAX_SPEED = 15;
 	final int MIN_SPEED = 1;
 
-	private int weight;
 	private double speedY;
 	private double Yo;
 
@@ -29,6 +29,9 @@ public class Slime extends ObjectPuz {
 		this.Yo = y;
 		this.type = type;
 		weight = ResourceUtils.spriteSlime.get(0).getWidth();
+		height = ResourceUtils.spriteSlime.get(0).getHeight();
+		radius = ResourceUtils.spriteSlime.get(0).getHeight() / 2;
+
 		switch (type) {
 			case SLIME_GREEN:
 				animationSlime = new AnimationSlime(
@@ -73,6 +76,8 @@ public class Slime extends ObjectPuz {
 			speed = 0;
 		}
 		animationSlime.runAnimation();
+
+		hitBox = new Rect((int) x, (int) y, weight, height);
 	}
 
 	public void drawing(GraphicsPuz graphicsPuz) {

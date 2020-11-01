@@ -1,5 +1,6 @@
 package com.example.corgirun.objects;
 
+import android.graphics.Rect;
 import com.example.corgirun.clases.Type;
 import com.example.corgirun.objects.animation.AnimationWitch;
 import com.example.corgirun.utilits.ResourceUtils;
@@ -11,7 +12,6 @@ public class Witch extends ObjectPuz {
 	final int MAX_SPEED = 15;
 	final int MIN_SPEED = 1;
 
-	private int weight;
 	private double speedY;
 	private double Yo;
 
@@ -28,6 +28,8 @@ public class Witch extends ObjectPuz {
 		this.Yo = y;
 		this.type = type;
 		weight = ResourceUtils.spriteWitch.get(0).getWidth();
+		height = ResourceUtils.spriteWitch.get(0).getHeight();
+		radius = (ResourceUtils.spriteWitch.get(0).getHeight() - 14) / 2;
 		switch (type) {
 			case WITCH_RED:
 				animationWitch = new AnimationWitch(
@@ -48,7 +50,7 @@ public class Witch extends ObjectPuz {
 
 	public void update() {
 		y += speedY;
-		if (y >= Yo + 3 || y == Yo) {
+		if (y >= Yo + 3 || y <= Yo) {
 			speedY *= -1;
 		}
 
@@ -58,6 +60,8 @@ public class Witch extends ObjectPuz {
 			speed = 0;
 		}
 		animationWitch.runAnimation();
+
+		hitBox = new Rect((int) x, (int) y, weight, height);
 	}
 
 	public void drawing(GraphicsPuz graphicsPuz) {

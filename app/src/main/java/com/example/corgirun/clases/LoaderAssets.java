@@ -79,10 +79,10 @@ public class LoaderAssets {
 		ResourceUtils.witchAtlas = graphicsPuz.newTexture("witch_atlas.png");
 
 		ResourceUtils.spriteWitch = new ArrayList<>();
-		ResourceUtils.spriteWitch.add(graphicsPuz.newSprite(ResourceUtils.witchAtlas, 0, 0, 48, 48));
-		ResourceUtils.spriteWitch.add(graphicsPuz.newSprite(ResourceUtils.witchAtlas, 48, 0, 48, 48));
-		ResourceUtils.spriteWitch.add(graphicsPuz.newSprite(ResourceUtils.witchAtlas, 0, 48, 48, 48));
-		ResourceUtils.spriteWitch.add(graphicsPuz.newSprite(ResourceUtils.witchAtlas, 48, 48, 48, 48));
+		ResourceUtils.spriteWitch.add(graphicsPuz.newSprite(ResourceUtils.witchAtlas, 0, 0, 36, 40));
+		ResourceUtils.spriteWitch.add(graphicsPuz.newSprite(ResourceUtils.witchAtlas, 36, 0, 36, 40));
+		ResourceUtils.spriteWitch.add(graphicsPuz.newSprite(ResourceUtils.witchAtlas, 0, 40, 36, 40));
+		ResourceUtils.spriteWitch.add(graphicsPuz.newSprite(ResourceUtils.witchAtlas, 36, 40, 36, 40));
 
 		ResourceUtils.slimeAtlas = graphicsPuz.newTexture("slime_atlas.png");
 
