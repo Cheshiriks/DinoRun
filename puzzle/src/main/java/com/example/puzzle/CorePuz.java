@@ -1,5 +1,6 @@
 package com.example.puzzle;
 
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.os.Bundle;
@@ -28,10 +29,18 @@ public class CorePuz extends AppCompatActivity {
     private boolean stateOnPause;
     private boolean stateOnResume;
 
+    //файл настроек / сохранений
+    private SharedPreferences sharedPreferences;
+
+    private final String SETTINGS = "settings";
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+
+        sharedPreferences = getSharedPreferences(SETTINGS, MODE_PRIVATE); //обращаемся к нашему файлу с сохранениями
+
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON); //отключаем спящий режим для приложения
 
         sizeDisplay = new Point();
@@ -102,6 +111,10 @@ public class CorePuz extends AppCompatActivity {
         scenePuz.resume();
         scenePuz.update();
         this.scenePuz = scenePuz;
+    }
+
+    public SharedPreferences getSharedPreferences() {
+        return sharedPreferences;
     }
 
 }

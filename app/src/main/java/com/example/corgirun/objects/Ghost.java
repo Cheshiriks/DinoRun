@@ -32,6 +32,7 @@ public class Ghost extends ObjectPuz {
 		);
 	}
 
+	@Override
 	public void update() {
 		y += speedY;
 		if (y >= Yo + 3 || y <= Yo) {
@@ -47,6 +48,7 @@ public class Ghost extends ObjectPuz {
 		hitBox = new Rect((int) x, (int) y, weight, height);
 	}
 
+	@Override
 	public void drawing(GraphicsPuz graphicsPuz) {
 		animationGhost.drawingAnimation(graphicsPuz, x, y);
 	}

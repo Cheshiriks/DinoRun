@@ -3,6 +3,7 @@ package com.example.corgirun.clases;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
 import com.example.corgirun.R;
+import com.example.corgirun.utilits.SettingsGameUtils;
 import com.example.puzzle.CorePuz;
 import com.example.puzzle.GraphicsPuz;
 import com.example.corgirun.utilits.ResourceUtils;
@@ -38,6 +39,8 @@ public class LoaderAssets {
 		loadButton(graphicsPuz);
 
 		loadOther(graphicsPuz);
+
+		SettingsGameUtils.loadSettings(corePuz);
 	}
 
 	private void loadTexture(GraphicsPuz graphicsPuz) {

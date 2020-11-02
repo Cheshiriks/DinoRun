@@ -69,6 +69,7 @@ public class Slime extends ObjectPuz {
 		}
 	}
 
+	@Override
 	public void update() {
 		x -= speed;
 		if (x <= -weight) {
@@ -80,6 +81,7 @@ public class Slime extends ObjectPuz {
 		hitBox = new Rect((int) x, (int) y, weight, height);
 	}
 
+	@Override
 	public void drawing(GraphicsPuz graphicsPuz) {
 		animationSlime.drawingAnimation(graphicsPuz, x, y);
 	}

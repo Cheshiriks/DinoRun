@@ -9,6 +9,7 @@ import com.example.corgirun.objects.Ghost;
 import com.example.corgirun.objects.Picture;
 import com.example.corgirun.objects.Slime;
 import com.example.corgirun.objects.Witch;
+import com.example.corgirun.utilits.SettingsGameUtils;
 import com.example.puzzle.CorePuz;
 import com.example.puzzle.GraphicsPuz;
 import com.example.puzzle.ObjectPuz;
@@ -102,7 +103,6 @@ public class GameManager {
 		enemiesList.add(ghost3);
 		enemiesList.add(slime3);
 		enemiesList.add(witch4);
-		enemiesList.add(slime4);
 
 		lastEnemy = enemiesList.get(0);
 		lastEnemy.setSpeed(1.5);
@@ -121,22 +121,9 @@ public class GameManager {
 
 		buttonPause.update();
 
-		witch.update();
-		witch2.update();
-		witch3.update();
-		witch4.update();
-		ghost.update();
-		ghost2.update();
-		ghost3.update();
-		slime1.update();
-		slime2.update();
-		slime3.update();
-		slime4.update();
-		slime5.update();
-		slime6.update();
-		slime7.update();
-		slime8.update();
-		slime9.update();
+		for (ObjectPuz enemy : enemiesList) {
+			enemy.update();
+		}
 
 		corgi.update();
 
@@ -164,22 +151,9 @@ public class GameManager {
 
 		buttonPause.drawing(graphicsPuz);
 
-		witch.drawing(graphicsPuz);
-		witch2.drawing(graphicsPuz);
-		witch3.drawing(graphicsPuz);
-		witch4.drawing(graphicsPuz);
-		ghost.drawing(graphicsPuz);
-		ghost2.drawing(graphicsPuz);
-		ghost3.drawing(graphicsPuz);
-		slime1.drawing(graphicsPuz);
-		slime2.drawing(graphicsPuz);
-		slime3.drawing(graphicsPuz);
-		slime4.drawing(graphicsPuz);
-		slime5.drawing(graphicsPuz);
-		slime6.drawing(graphicsPuz);
-		slime7.drawing(graphicsPuz);
-		slime8.drawing(graphicsPuz);
-		slime9.drawing(graphicsPuz);
+		for (ObjectPuz enemy : enemiesList) {
+			enemy.drawing(graphicsPuz);
+		}
 
 		corgi.drawing(graphicsPuz);
 	}
@@ -229,6 +203,11 @@ public class GameManager {
 
 	public Corgi getCorgi() {
 		return corgi;
+	}
+
+	public void gameOver(CorePuz corePuz) {
+		SettingsGameUtils.addDistance((int)distance);
+		SettingsGameUtils.saveSettings(corePuz);
 	}
 
 }
