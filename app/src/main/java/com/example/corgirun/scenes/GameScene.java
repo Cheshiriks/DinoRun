@@ -6,6 +6,7 @@ import com.example.corgirun.R;
 import com.example.corgirun.clases.GameManager;
 import com.example.corgirun.clases.PauseManager;
 import com.example.corgirun.utilits.ResourceUtils;
+import com.example.corgirun.utilits.SettingsGameUtils;
 import com.example.puzzle.CorePuz;
 import com.example.puzzle.ScenePuz;
 import java.util.Date;
@@ -79,6 +80,7 @@ public class GameScene extends ScenePuz {
             gameState = GameState.PAUSE;
         }
         if (gameManager.getCorgi().getHP() <= 0) {
+            gameManager.gameOver(corePuz);
             gameState = GameState.PAUSE;
         }
         gameManager.update();
@@ -114,6 +116,7 @@ public class GameScene extends ScenePuz {
             gameState = GameState.RUNNING;
         }
         if (pauseManager.getButtonPauseExit().isTouch(corePuz)) {
+            gameManager.gameOver(corePuz);
             corePuz.setScene(new MainMenuScene(corePuz));
         }
         pauseManager.update();

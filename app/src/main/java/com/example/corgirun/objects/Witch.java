@@ -48,6 +48,7 @@ public class Witch extends ObjectPuz {
 		}
 	}
 
+	@Override
 	public void update() {
 		y += speedY;
 		if (y >= Yo + 3 || y <= Yo) {
@@ -64,6 +65,7 @@ public class Witch extends ObjectPuz {
 		hitBox = new Rect((int) x, (int) y, weight, height);
 	}
 
+	@Override
 	public void drawing(GraphicsPuz graphicsPuz) {
 		animationWitch.drawingAnimation(graphicsPuz, x, y);
 	}

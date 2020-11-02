@@ -19,6 +19,10 @@ public abstract class ObjectPuz {
     protected int weight;
     protected int height;
 
+    public void update() {}
+
+    public void drawing(GraphicsPuz graphicsPuz) {}
+
     public int getMaxScreenX() {
         return maxScreenX;
     }

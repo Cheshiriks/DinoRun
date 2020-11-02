@@ -4,6 +4,7 @@ import android.graphics.Color;
 
 import com.example.corgirun.R;
 import com.example.corgirun.utilits.ResourceUtils;
+import com.example.corgirun.utilits.SettingsGameUtils;
 import com.example.puzzle.CorePuz;
 import com.example.puzzle.ScenePuz;
 
@@ -23,8 +24,8 @@ public class MainMenuScene extends ScenePuz {
 
     @Override
     public void drawing() {
-        graphicsPuz.clearScene(Color.BLACK);
         graphicsPuz.drawTexture(ResourceUtils.menu, 0, 0);
+        graphicsPuz.drawText("HI  " + SettingsGameUtils.distance, 10, 15, Color.WHITE, 16, ResourceUtils.menuFont);
         graphicsPuz.drawText(corePuz.getString(R.string.main_menu_app_name), 75, 35, Color.BLUE, 20, null);
         graphicsPuz.drawText(corePuz.getString(R.string.main_menu_new_game), 20, 100, Color.BLUE, 16, ResourceUtils.menuFont);
         graphicsPuz.drawText(corePuz.getString(R.string.main_menu_settings), 20, 115, Color.BLUE, 16, ResourceUtils.menuFont);
