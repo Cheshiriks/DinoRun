@@ -1,5 +1,6 @@
 package com.example.corgirun.clases;
 
+import com.example.corgirun.objects.Coin;
 import com.example.corgirun.objects.Corgi;
 import com.example.corgirun.objects.Ghost;
 import com.example.corgirun.objects.Slime;
@@ -63,8 +64,8 @@ public class CollisionDetect extends CollisionDetectPuz {
 					return true;
 				}
 			}
-			if ((headXo > object2Xo && headXo < object2X) || (headX > object2Xo && headX < object2X)) {
-				if ((headYo > object2Yo && headYo < object2Y) || (headY > object2Yo && headY < object2Y)) {
+			if ((object1Xo > headXo && object1Xo < headX) || (object1X > headXo && object1X < headX)) {
+				if ((object1Yo > headYo && object1Yo < headY) || (object1Y > headYo && object1Y < headY) || (headYo >= object1Yo && headYo <= object1Y)) {
 					return true;
 				}
 			}
@@ -91,8 +92,8 @@ public class CollisionDetect extends CollisionDetectPuz {
 					return true;
 				}
 			}
-			if ((broomXo > object2Xo && broomXo < object2X) || (broomX > object2Xo && broomX < object2X)) {
-				if ((broomYo > object2Yo && broomYo < object2Y) || (broomY > object2Yo && broomY < object2Y)) {
+			if ((object1Xo > broomXo && object1Xo < broomX) || (object1X > broomXo && object1X < broomX)) {
+				if ((object1Yo > broomYo && object1Yo < broomY) || (object1Y > broomYo && object1Y < broomY) || (broomYo >= object1Yo && broomYo <= object1Y)) {
 					return true;
 				}
 			}
@@ -100,8 +101,19 @@ public class CollisionDetect extends CollisionDetectPuz {
 
 		}
 
+		if (object2 instanceof Coin) {
+			object2Xo = object2.getX() + 3;
+			object2Yo = object2.getY() + 3;
+
+			object2Weight = object2.getWeight() - 6;
+			object2Height = object2.getHeight() - 6;
+
+			object2X = object2Xo + object2Weight;
+			object2Y = object2Yo + object2Height;
+		}
+
 		if ((object1Xo > object2Xo && object1Xo < object2X) || (object1X > object2Xo && object1X < object2X)) {
-			if ((object1Yo > object2Yo && object1Yo < object2Y) || (object1Y > object2Yo && object1Y < object2Y)) {
+			if ((object1Yo > object2Yo && object1Yo < object2Y) || (object1Y > object2Yo && object1Y < object2Y) || (object2Yo >= object1Yo && object2Yo <= object1Y)) {
 				return true;
 			}
 		}

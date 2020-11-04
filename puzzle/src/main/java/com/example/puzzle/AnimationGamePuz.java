@@ -1,8 +1,9 @@
 package com.example.puzzle;
 
 import android.graphics.Bitmap;
+import com.example.puzzle.service.AnimationPuz;
 
-public class AnimationGamePuz {
+public class AnimationGamePuz implements AnimationPuz {
 
 	double speedAnimation;
 	int delayIndex;
@@ -50,6 +51,7 @@ public class AnimationGamePuz {
 		frames = 18;
 	}
 
+	@Override
 	public void runAnimation() {
 		delayIndex++;
 		if (countFrames==0) {
@@ -107,6 +109,7 @@ public class AnimationGamePuz {
 		sprite = spriteJump;
 	}
 
+	@Override
 	public void drawingAnimation(GraphicsPuz graphicsPuz, double x, double y) {
 		graphicsPuz.drawTexture(sprite, x, y);
 	}

@@ -21,6 +21,8 @@ public class ResourceUtils {
 	public static Bitmap slimeAtlas;
 	public static ArrayList<Bitmap> spriteSlime;
 
+	public static Bitmap spriteCoin;
+
 	public static Bitmap fireplaceAtlas;
 	public static ArrayList<Bitmap> spriteFireplace;
 

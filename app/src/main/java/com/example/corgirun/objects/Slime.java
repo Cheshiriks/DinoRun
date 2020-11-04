@@ -13,20 +13,15 @@ public class Slime extends ObjectPuz {
 	final int MAX_SPEED = 15;
 	final int MIN_SPEED = 1;
 
-	private double speedY;
-	private double Yo;
-
 	private final Type type;
 	AnimationSlime animationSlime;
 
-	public Slime(double speedX, double speedY, double x, double y, int maxScreenX, int maxScreenY, Type type) {
+	public Slime(double speedX, double x, double y, int maxScreenX, int maxScreenY, Type type) {
 		this.x = x;
 		this.y = y;
 		this.speed = speedX;
-		this.speedY = speedY;
 		this.maxScreenX = maxScreenX;
 		this.maxScreenY = maxScreenY;
-		this.Yo = y;
 		this.type = type;
 		weight = ResourceUtils.spriteSlime.get(0).getWidth();
 		height = ResourceUtils.spriteSlime.get(0).getHeight();

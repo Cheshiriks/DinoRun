@@ -26,6 +26,7 @@ public class MainMenuScene extends ScenePuz {
     public void drawing() {
         graphicsPuz.drawTexture(ResourceUtils.menu, 0, 0);
         graphicsPuz.drawText("HI  " + SettingsGameUtils.distance, 10, 15, Color.WHITE, 16, ResourceUtils.menuFont);
+        graphicsPuz.drawText("BC  " + SettingsGameUtils.coins, 10, 25, Color.WHITE, 16, ResourceUtils.menuFont);
         graphicsPuz.drawText(corePuz.getString(R.string.main_menu_app_name), 75, 35, Color.BLUE, 20, null);
         graphicsPuz.drawText(corePuz.getString(R.string.main_menu_new_game), 20, 100, Color.BLUE, 16, ResourceUtils.menuFont);
         graphicsPuz.drawText(corePuz.getString(R.string.main_menu_settings), 20, 115, Color.BLUE, 16, ResourceUtils.menuFont);

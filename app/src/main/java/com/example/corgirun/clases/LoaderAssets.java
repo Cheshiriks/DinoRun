@@ -40,6 +40,9 @@ public class LoaderAssets {
 
 		loadOther(graphicsPuz);
 
+		loadCoin(graphicsPuz);
+
+		//загружаем настройки и сохранения
 		SettingsGameUtils.loadSettings(corePuz);
 	}
 
@@ -119,7 +122,11 @@ public class LoaderAssets {
 		ResourceUtils.background = graphicsPuz.newTexture("background.png");
 	}
 
-  //----загружаем камин----start
+	private void loadCoin(GraphicsPuz graphicsPuz) {
+		ResourceUtils.spriteCoin = graphicsPuz.newTexture("coin.png");
+	}
+
+  //загружаем камин----start
 	private void loadFireplace(GraphicsPuz graphicsPuz) {
 		ResourceUtils.fireplaceAtlas = graphicsPuz.newTexture("fireplace.png");
 	}
@@ -131,10 +138,10 @@ public class LoaderAssets {
 		ResourceUtils.spriteFireplace.add(graphicsPuz.newSprite(ResourceUtils.fireplaceAtlas, 0, 0, 128, 135));
 		ResourceUtils.spriteFireplace.add(graphicsPuz.newSprite(ResourceUtils.fireplaceAtlas, 256, 0, 128, 135));
 	}
-	//----загружаем камин----end
+	//загружаем камин----end
 
 
-	//----загружаем картину----start
+	//загружаем картину----start
 	private void loadPicture(GraphicsPuz graphicsPuz) {
 		ResourceUtils.pictureAtlas = graphicsPuz.newTexture("picture.png");
 	}
@@ -144,9 +151,10 @@ public class LoaderAssets {
 		ResourceUtils.spritePicture.add(graphicsPuz.newSprite(ResourceUtils.pictureAtlas, 0, 0, 48, 135));
 		ResourceUtils.spritePicture.add(graphicsPuz.newSprite(ResourceUtils.pictureAtlas, 48, 0, 48, 135));
 	}
-	//----загружаем картину----end
+	//загружаем картину----end
 
-	//----загружаем подсвечник----start
+
+	//загружаем подсвечник----start
 	private void loadFire(GraphicsPuz graphicsPuz) {
 		ResourceUtils.fireAtlas = graphicsPuz.newTexture("fire.png");
 	}
@@ -158,13 +166,14 @@ public class LoaderAssets {
 		ResourceUtils.spriteFire.add(graphicsPuz.newSprite(ResourceUtils.fireAtlas, 96, 0, 48, 135));
 		ResourceUtils.spriteFire.add(graphicsPuz.newSprite(ResourceUtils.fireAtlas, 48, 0, 48, 135));
 	}
-	//----загружаем подсвечник----end
+	//загружаем подсвечник----end
 
-	//----загружаем меню----start
+
+	//загружаем меню----start
 	private void loadMenu(GraphicsPuz graphicsPuz) {
 		ResourceUtils.menu = graphicsPuz.newTexture("menu.png");
 	}
-	//----загружаем меню----end
+	//загружаем меню----end
 
 	private void loadButton(GraphicsPuz graphicsPuz) {
 

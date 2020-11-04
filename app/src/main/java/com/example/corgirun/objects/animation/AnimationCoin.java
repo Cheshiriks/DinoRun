@@ -4,13 +4,13 @@ import android.graphics.Bitmap;
 import com.example.puzzle.GraphicsPuz;
 import com.example.puzzle.service.AnimationPuz;
 
-public class AnimationGhost implements AnimationPuz {
+public class AnimationCoin implements AnimationPuz {
 
 	double speedAnimation;
 
 	Bitmap sprite;
 
-	public AnimationGhost(double speedAnimation, Bitmap sprite) {
+	public AnimationCoin(double speedAnimation, Bitmap sprite) {
 		this.speedAnimation = speedAnimation;
 		this.sprite = sprite;
 	}
