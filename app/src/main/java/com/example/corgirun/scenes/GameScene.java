@@ -97,6 +97,7 @@ public class GameScene extends ScenePuz {
         graphicsPuz.clearScene(Color.BLACK);
         gameManager.drawing(corePuz, graphicsPuz);
         graphicsPuz.drawText("HI  " + (int)gameManager.getDistance(), 190, 15, Color.WHITE, 16, ResourceUtils.menuFont);
+        graphicsPuz.drawText("BC  " + (int)gameManager.getGameCoins(), 190, 25, Color.YELLOW, 16, ResourceUtils.menuFont);
 
         //----------Debug FPS------------
         graphicsPuz.drawText("FPS " + drawings, 30, 15, Color.WHITE, 16, ResourceUtils.menuFont);

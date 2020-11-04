@@ -18,12 +18,17 @@ public class SettingsGameUtils {
 
 	public static void loadSettings(CorePuz corePuz) {
 		distance = corePuz.getSharedPreferences().getInt("passedDistance", distance);
+		coins = corePuz.getSharedPreferences().getInt("gameCoins", coins);
 	}
 
 	public static void addDistance(int values) {
 		if (distance < values) {
 			distance = values;
 		}
+	}
+
+	public static void setCoins(int values) {
+		coins += values;
 	}
 
 }

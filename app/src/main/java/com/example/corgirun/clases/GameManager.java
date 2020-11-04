@@ -2,6 +2,7 @@ package com.example.corgirun.clases;
 
 import com.example.corgirun.objects.Background;
 import com.example.corgirun.objects.ButtonPause;
+import com.example.corgirun.objects.Coin;
 import com.example.corgirun.objects.Corgi;
 import com.example.corgirun.objects.Fire;
 import com.example.corgirun.objects.Fireplace;
@@ -23,6 +24,7 @@ public class GameManager {
 	private int minScreenX;
 
 	private double distance;
+	private int gameCoins;
 
 	Corgi corgi;
 
@@ -52,6 +54,7 @@ public class GameManager {
 	ButtonPause buttonPause;
 
 	ArrayList<ObjectPuz> enemiesList = new ArrayList<>();
+	ArrayList<ArrayList<Coin>> coinsList = new ArrayList<>();
 	ObjectPuz lastEnemy;
 
 	public GameManager(CorePuz corePuz, int sceneWidth, int sceneHeight) {
@@ -60,6 +63,7 @@ public class GameManager {
 		this.minScreenX = 0;
 		this.minScreenY = 0;
 		distance = 0;
+		gameCoins = 0;
 		corgi = new Corgi(corePuz, maxScreenX, maxScreenY, minScreenY);
 
 		witch = new Witch(0, 0.1, 2*maxScreenX, 64, maxScreenX, maxScreenY, Type.WITCH_RED);
@@ -69,15 +73,15 @@ public class GameManager {
 		ghost = new Ghost(0, 0.1, 2*maxScreenX, 80, maxScreenX, maxScreenY);
 		ghost2 = new Ghost(0, 0.1, 2*maxScreenX, 80, maxScreenX, maxScreenY);
 		ghost3 = new Ghost(0, 0.1, 2*maxScreenX, 80, maxScreenX, maxScreenY);
-		slime1 = new Slime(0, 0.1, 2*maxScreenX, 91, maxScreenX, maxScreenY, Type.SLIME_GREEN);
-		slime2 = new Slime(0, 0.1, 2*maxScreenX, 91, maxScreenX, maxScreenY, Type.SLIME_GREEN);
-		slime3 = new Slime(0, 0.1, 2*maxScreenX, 91, maxScreenX, maxScreenY, Type.SLIME_GREEN);
-		slime4 = new Slime(0, 0.1, 2*maxScreenX, 91, maxScreenX, maxScreenY, Type.SLIME_BLUE);
-		slime5 = new Slime(0, 0.1, 2*maxScreenX, 91, maxScreenX, maxScreenY, Type.SLIME_BLUE);
-		slime6 = new Slime(0, 0.1, 2*maxScreenX, 91, maxScreenX, maxScreenY, Type.SLIME_BLUE);
-		slime7 = new Slime(0, 0.1, 2*maxScreenX, 91, maxScreenX, maxScreenY, Type.SLIME_PINK);
-		slime8 = new Slime(0, 0.1, 2*maxScreenX, 91, maxScreenX, maxScreenY, Type.SLIME_PINK);
-		slime9 = new Slime(0, 0.1, 2*maxScreenX, 91, maxScreenX, maxScreenY, Type.SLIME_PINK);
+		slime1 = new Slime(0, 2*maxScreenX, 91, maxScreenX, maxScreenY, Type.SLIME_GREEN);
+		slime2 = new Slime(0, 2*maxScreenX, 91, maxScreenX, maxScreenY, Type.SLIME_GREEN);
+		slime3 = new Slime(0, 2*maxScreenX, 91, maxScreenX, maxScreenY, Type.SLIME_GREEN);
+		slime4 = new Slime(0, 2*maxScreenX, 91, maxScreenX, maxScreenY, Type.SLIME_BLUE);
+		slime5 = new Slime(0, 2*maxScreenX, 91, maxScreenX, maxScreenY, Type.SLIME_BLUE);
+		slime6 = new Slime(0, 2*maxScreenX, 91, maxScreenX, maxScreenY, Type.SLIME_BLUE);
+		slime7 = new Slime(0, 2*maxScreenX, 91, maxScreenX, maxScreenY, Type.SLIME_PINK);
+		slime8 = new Slime(0, 2*maxScreenX, 91, maxScreenX, maxScreenY, Type.SLIME_PINK);
+		slime9 = new Slime(0, 2*maxScreenX, 91, maxScreenX, maxScreenY, Type.SLIME_PINK);
 
 		background_1 = new Background(1, 0, 0, maxScreenX, maxScreenY);
 		background_2 = new Background(1, background_1.getWeight(), 0, maxScreenX, maxScreenY);
@@ -106,6 +110,8 @@ public class GameManager {
 
 		lastEnemy = enemiesList.get(0);
 		lastEnemy.setSpeed(1.5);
+
+		createCoinsList(coinsList);
 	}
 
 	public void update() {
@@ -121,6 +127,12 @@ public class GameManager {
 
 		buttonPause.update();
 
+		for (ArrayList<Coin> coinsListNew : coinsList) {
+			for (Coin coin : coinsListNew) {
+				coin.update();
+			}
+		}
+
 		for (ObjectPuz enemy : enemiesList) {
 			enemy.update();
 		}
@@ -133,13 +145,24 @@ public class GameManager {
 
 	}
 
-	//Проверка столкновения игрока с объектами
+	//Проверка столкновения игрока с объектом
 	private void checkHit() {
 		for (ObjectPuz enemy : enemiesList) {
 			if (CollisionDetect.collisionDetect(corgi, enemy)) {
 				corgi.setHP(corgi.getHP() - 1);
 			}
 		}
+
+		for (ArrayList<Coin> coinsListNew : coinsList) {
+			for (Coin coin : coinsListNew) {
+				if (CollisionDetect.collisionDetect(corgi, coin)) {
+					coin.setX(2*maxScreenX);
+					coin.setSpeed(0);
+					gameCoins++;
+				}
+			}
+		}
+
 	}
 
 	public void drawing(CorePuz corePuz, GraphicsPuz graphicsPuz) {
@@ -150,6 +173,12 @@ public class GameManager {
 		fire.drawing(graphicsPuz);
 
 		buttonPause.drawing(graphicsPuz);
+
+		for (ArrayList<Coin> coinsListNew : coinsList) {
+			for (Coin coin : coinsListNew) {
+				coin.drawing(graphicsPuz);
+			}
+		}
 
 		for (ObjectPuz enemy : enemiesList) {
 			enemy.drawing(graphicsPuz);
@@ -166,6 +195,10 @@ public class GameManager {
 		return distance;
 	}
 
+	public int getGameCoins() {
+		return gameCoins;
+	}
+
 	//Определяем пора ли выпустить нового врага
 	private void generateEnemies(ArrayList<ObjectPuz> enemiesList, double speed) {
 
@@ -180,7 +213,32 @@ public class GameManager {
 
 			lastEnemy = enemiesList2.get(randomEnemy(enemiesList2.size() - 1));
 			lastEnemy.setSpeed(0.5 + speed);
+
+			//вероятность создать монетки
+			if ((Math.random() * 100) < 20) {
+				generateCoin(coinsList, speed);
+			}
+
 		}
+	}
+
+	private void generateCoin(ArrayList<ArrayList<Coin>> coinsList, double speed) {
+		ArrayList<ArrayList<Coin>> coinsList2 = new ArrayList<>();
+		for (ArrayList<Coin> coinsListNew : coinsList) {
+			for (Coin coin : coinsListNew) {
+				if (coin.getSpeed() != 0) {
+					break;
+				}
+				coinsList2.add(coinsListNew);
+			}
+		}
+		int x = -26;
+		for (Coin coin : coinsList2.get(randomEnemy(coinsList2.size() - 1))) {
+			x += 26;
+			coin.setSpeed(speed);
+			coin.setX(coin.getX() + x);
+		}
+
 	}
 
 	private int randomDistance() {
@@ -207,7 +265,21 @@ public class GameManager {
 
 	public void gameOver(CorePuz corePuz) {
 		SettingsGameUtils.addDistance((int)distance);
+		SettingsGameUtils.setCoins(gameCoins);
 		SettingsGameUtils.saveSettings(corePuz);
+	}
+
+	private void createCoinsList(ArrayList<ArrayList<Coin>> coinsList) {
+		for (int i = 0; i<3; i++ ) {
+			ArrayList<Coin> list = new ArrayList<>();
+			ArrayList<Coin> list2 = new ArrayList<>();
+			for (int j = 0; j<3; j++ ) {
+				list.add(new Coin(0, 2*maxScreenX, 45, maxScreenX, maxScreenY));
+				list2.add(new Coin(0, 2*maxScreenX, 100, maxScreenX, maxScreenY));
+			}
+			coinsList.add(list);
+			coinsList.add(list2);
+		}
 	}
 
 }

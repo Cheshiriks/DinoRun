@@ -2,8 +2,9 @@ package com.example.corgirun.objects.animation;
 
 import android.graphics.Bitmap;
 import com.example.puzzle.GraphicsPuz;
+import com.example.puzzle.service.AnimationPuz;
 
-public class AnimationWitch {
+public class AnimationWitch implements AnimationPuz {
 
 	int countFrames;
 	int frames;
@@ -21,6 +22,7 @@ public class AnimationWitch {
 		frames = 170;
 	}
 
+	@Override
 	public void runAnimation() {
 		if (countFrames==0) {
 			sprite = sprite1;
@@ -35,6 +37,7 @@ public class AnimationWitch {
 		}
 	}
 
+	@Override
 	public void drawingAnimation(GraphicsPuz graphicsPuz, double x, double y) {
 		graphicsPuz.drawTexture(sprite, x, y);
 	}
