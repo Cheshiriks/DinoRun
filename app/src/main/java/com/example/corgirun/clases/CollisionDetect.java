@@ -12,7 +12,12 @@ public class CollisionDetect extends CollisionDetectPuz {
 
 	public static boolean collisionDetect(Corgi object1, ObjectPuz object2) {
 
-		if (!object1.isDuckDown()) {
+		double bodyXo = object2.getX() + 9;
+		double bodyYo = object2.getY() + 5;
+		double bodyX = bodyXo + 14;
+		double bodyY = bodyYo + 5;
+
+		if (!object1.isDuckDown() && !object1.isJump()) {
 			object1Xo = object1.getX() + 4;
 			object1Yo = object1.getY() + 4;
 
@@ -32,16 +37,42 @@ public class CollisionDetect extends CollisionDetectPuz {
 			object1X = object1Xo + object1Weight;
 			object1Y = object1Yo + object1Height;
 		}
+		if (object1.isJump()) {
+			object1Xo = object1.getX() + 6;
+			object1Yo = object1.getY() + 4;
+
+			object1Weight = object1.getWeight() - 14;
+			object1Height = object1.getHeight() - 8;
+
+			object1X = object1Xo + object1Weight;
+			object1Y = object1Yo + object1Height;
+		}
 
 		if (object2 instanceof Ghost) {
 			object2Xo = object2.getX() + 8;
-			object2Yo = object2.getY() + 6;
+			object2Yo = object2.getY() + 11;
 
 			object2Weight = object2.getWeight() - 21;
-			object2Height = object2.getHeight() - 9;
+			object2Height = object2.getHeight() - 14;
 
 			object2X = object2Xo + object2Weight;
 			object2Y = object2Yo + object2Height;
+
+			double headXo = object2.getX() + 11;
+			double headYo = object2.getY() + 5;
+			double headX = headXo + 10;
+			double headY = headYo + 6;
+
+			if ((object1Xo > object2Xo && object1Xo < object2X) || (object1X > object2Xo && object1X < object2X)) {
+				if ((object1Yo > object2Yo && object1Yo < object2Y) || (object1Y > object2Yo && object1Y < object2Y)) {
+					return true;
+				}
+			}
+			if ((object1Xo > headXo && object1Xo < headX) || (object1X > headXo && object1X < headX)) {
+				if ((object1Yo > headYo && object1Yo < headY) || (object1Y > headYo && object1Y < headY) || (headYo >= object1Yo && headYo <= object1Y)) {
+					return true;
+				}
+			}
 		}
 
 		if (object2 instanceof Slime) {

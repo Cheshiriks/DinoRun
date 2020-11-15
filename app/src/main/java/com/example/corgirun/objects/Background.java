@@ -29,7 +29,7 @@ public class Background extends ObjectPuz {
 
 		x -= speed;
 
-		if (x == -weight) {
+		if (x <= -weight) {
 			x = weight;
 		}
 
