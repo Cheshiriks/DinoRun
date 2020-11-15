@@ -26,6 +26,8 @@ public class GameManager {
 	private double distance;
 	private int gameCoins;
 
+	private double speedGame;
+
 	Corgi corgi;
 
 	Witch witch;
@@ -64,6 +66,7 @@ public class GameManager {
 		this.minScreenY = 0;
 		distance = 0;
 		gameCoins = 0;
+		speedGame = 1;
 		corgi = new Corgi(corePuz, maxScreenX, maxScreenY, minScreenY);
 
 		witch = new Witch(0, 0.1, 2*maxScreenX, 64, maxScreenX, maxScreenY, Type.WITCH_RED);
@@ -114,10 +117,61 @@ public class GameManager {
 		createCoinsList(coinsList);
 	}
 
-	public void update() {
+	private void setSpeedEnemiesAndCoins(double speed) {
+		for (ObjectPuz enemy : enemiesList) {
+			if (enemy.getSpeed() != 0) {
+				enemy.setSpeed(speed + 0.5);
+			}
+		}
+		for (ArrayList<Coin> coinsListNew : coinsList) {
+			for (Coin coin : coinsListNew) {
+				if (coin.getSpeed() != 0) {
+					coin.setSpeed(speed);
+				}
+			}
+		}
+	}
 
-		generateEnemies(enemiesList, 1);
-		setSpeedGame(1);
+	public void update() {
+		if (distance < 240) {
+			generateEnemies(enemiesList, 1);
+			setSpeedGame(1);
+		}
+		else if (distance < 720) {
+			generateEnemies(enemiesList, 1.5);
+			setSpeedGame(1.5);
+			setSpeedEnemiesAndCoins(1.5);
+			corgi.setGRAVITY(-0.235);
+			corgi.setJumpSpeed(5);
+		}
+		else if (distance < 960) {
+			generateEnemies(enemiesList, 2);
+			setSpeedGame(2);
+			setSpeedEnemiesAndCoins(2);
+			corgi.setGRAVITY(-0.3375);
+			corgi.setJumpSpeed(6);
+		}
+		else if (distance < 1440) {
+			generateEnemies(enemiesList, 2.5);
+			setSpeedGame(2.5);
+			setSpeedEnemiesAndCoins(2.5);
+			corgi.setGRAVITY(-0.46);
+			corgi.setJumpSpeed(7);
+		}
+		else if (distance < 1920) {
+			generateEnemies(enemiesList, 3);
+			setSpeedGame(3);
+			setSpeedEnemiesAndCoins(3);
+			corgi.setGRAVITY(-0.6);
+			corgi.setJumpSpeed(8);
+		}
+		else {
+			generateEnemies(enemiesList, 4);
+			setSpeedGame(4);
+			setSpeedEnemiesAndCoins(4);
+			corgi.setGRAVITY(-0.9);
+			corgi.setJumpSpeed(10);
+		}
 
 		background_1.update();
 		background_2.update();
@@ -225,10 +279,14 @@ public class GameManager {
 	private void generateCoin(ArrayList<ArrayList<Coin>> coinsList, double speed) {
 		ArrayList<ArrayList<Coin>> coinsList2 = new ArrayList<>();
 		for (ArrayList<Coin> coinsListNew : coinsList) {
+			boolean isSpeed = true;
 			for (Coin coin : coinsListNew) {
 				if (coin.getSpeed() != 0) {
+					isSpeed = false;
 					break;
 				}
+			}
+			if (isSpeed) {
 				coinsList2.add(coinsListNew);
 			}
 		}
@@ -242,7 +300,7 @@ public class GameManager {
 	}
 
 	private int randomDistance() {
-		return 140 + (int) (Math.random() * 100);
+		return 200 + (int) (Math.random() * 100);
 	}
 
 	private int randomEnemy(int max) {

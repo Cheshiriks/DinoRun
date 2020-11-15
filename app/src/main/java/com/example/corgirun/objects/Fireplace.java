@@ -31,7 +31,7 @@ public class Fireplace extends ObjectPuz {
 
 	public void update() {
 		x -= speed;
-		if (x == -weight) {
+		if (x <= -weight) {
 			x = (480-weight);
 		}
 		animationFireplace.runAnimation();
