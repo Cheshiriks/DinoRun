@@ -1,6 +1,8 @@
 package com.example.corgirun.objects;
 
 import android.graphics.Rect;
+import com.example.corgirun.clases.Type;
+import com.example.corgirun.objects.animation.AnimationWitch;
 import com.example.puzzle.AnimationGamePuz;
 import com.example.puzzle.CorePuz;
 import com.example.puzzle.GraphicsPuz;
@@ -20,7 +22,7 @@ public class Corgi extends ObjectPuz {
 	boolean duckDown;
 	private int HP;
 
-	public Corgi(CorePuz corePuz, int maxScreenX, int maxScreenY, int minScreenY) {
+	public Corgi(CorePuz corePuz, int maxScreenX, int maxScreenY, int minScreenY, Type type) {
 
 		jump = false;
 		jumpUp = false;
@@ -39,22 +41,98 @@ public class Corgi extends ObjectPuz {
 		radius = (ResourceUtils.spritePlayer.get(0).getHeight() - 8) / 2;
 
 		//this.maxScreenY = maxScreenY - ResourceUtils.spritePlayer.get(0).getHeight();
-		animationSpriteCorgi = new AnimationGamePuz(
-				speed,
-				ResourceUtils.spritePlayer.get(0),
-				ResourceUtils.spritePlayer.get(1),
-				ResourceUtils.spritePlayer.get(2),
-				ResourceUtils.spritePlayer.get(3),
-				ResourceUtils.spritePlayer.get(4),
-				ResourceUtils.spritePlayer.get(5),
-				ResourceUtils.jumpCorgi,
-				ResourceUtils.spriteDuckDown.get(0),
-				ResourceUtils.spriteDuckDown.get(1),
-				ResourceUtils.spriteDuckDown.get(2),
-				ResourceUtils.spriteDuckDown.get(3),
-				ResourceUtils.spriteDuckDown.get(4),
-				ResourceUtils.spriteDuckDown.get(5)
-		);
+		switch (type) {
+			case DINO_VITA:
+				animationSpriteCorgi = new AnimationGamePuz(
+						speed,
+						ResourceUtils.spritePlayer.get(0),
+						ResourceUtils.spritePlayer.get(1),
+						ResourceUtils.spritePlayer.get(2),
+						ResourceUtils.spritePlayer.get(3),
+						ResourceUtils.spritePlayer.get(4),
+						ResourceUtils.spritePlayer.get(5),
+						ResourceUtils.jumpCorgi.get(0),
+						ResourceUtils.spriteDuckDown.get(0),
+						ResourceUtils.spriteDuckDown.get(1),
+						ResourceUtils.spriteDuckDown.get(2),
+						ResourceUtils.spriteDuckDown.get(3),
+						ResourceUtils.spriteDuckDown.get(4),
+						ResourceUtils.spriteDuckDown.get(5)
+				);
+				break;
+			case DINO_DOUX:
+				animationSpriteCorgi = new AnimationGamePuz(
+						speed,
+						ResourceUtils.spritePlayer.get(6),
+						ResourceUtils.spritePlayer.get(7),
+						ResourceUtils.spritePlayer.get(8),
+						ResourceUtils.spritePlayer.get(9),
+						ResourceUtils.spritePlayer.get(10),
+						ResourceUtils.spritePlayer.get(11),
+						ResourceUtils.jumpCorgi.get(1),
+						ResourceUtils.spriteDuckDown.get(6),
+						ResourceUtils.spriteDuckDown.get(7),
+						ResourceUtils.spriteDuckDown.get(8),
+						ResourceUtils.spriteDuckDown.get(9),
+						ResourceUtils.spriteDuckDown.get(10),
+						ResourceUtils.spriteDuckDown.get(11)
+				);
+			case DINO_TARD:
+				animationSpriteCorgi = new AnimationGamePuz(
+						speed,
+						ResourceUtils.spritePlayer.get(12),
+						ResourceUtils.spritePlayer.get(13),
+						ResourceUtils.spritePlayer.get(14),
+						ResourceUtils.spritePlayer.get(15),
+						ResourceUtils.spritePlayer.get(16),
+						ResourceUtils.spritePlayer.get(17),
+						ResourceUtils.jumpCorgi.get(2),
+						ResourceUtils.spriteDuckDown.get(12),
+						ResourceUtils.spriteDuckDown.get(13),
+						ResourceUtils.spriteDuckDown.get(14),
+						ResourceUtils.spriteDuckDown.get(15),
+						ResourceUtils.spriteDuckDown.get(16),
+						ResourceUtils.spriteDuckDown.get(17)
+				);
+				break;
+			case DINO_MORT:
+				animationSpriteCorgi = new AnimationGamePuz(
+						speed,
+						ResourceUtils.spritePlayer.get(18),
+						ResourceUtils.spritePlayer.get(19),
+						ResourceUtils.spritePlayer.get(20),
+						ResourceUtils.spritePlayer.get(21),
+						ResourceUtils.spritePlayer.get(22),
+						ResourceUtils.spritePlayer.get(23),
+						ResourceUtils.jumpCorgi.get(3),
+						ResourceUtils.spriteDuckDown.get(18),
+						ResourceUtils.spriteDuckDown.get(19),
+						ResourceUtils.spriteDuckDown.get(20),
+						ResourceUtils.spriteDuckDown.get(21),
+						ResourceUtils.spriteDuckDown.get(22),
+						ResourceUtils.spriteDuckDown.get(23)
+				);
+				break;
+			case DINO_SANTA:
+				animationSpriteCorgi = new AnimationGamePuz(
+						speed,
+						ResourceUtils.spritePlayer.get(24),
+						ResourceUtils.spritePlayer.get(25),
+						ResourceUtils.spritePlayer.get(26),
+						ResourceUtils.spritePlayer.get(27),
+						ResourceUtils.spritePlayer.get(28),
+						ResourceUtils.spritePlayer.get(29),
+						ResourceUtils.jumpCorgi.get(4),
+						ResourceUtils.spriteDuckDown.get(24),
+						ResourceUtils.spriteDuckDown.get(25),
+						ResourceUtils.spriteDuckDown.get(26),
+						ResourceUtils.spriteDuckDown.get(27),
+						ResourceUtils.spriteDuckDown.get(28),
+						ResourceUtils.spriteDuckDown.get(29)
+				);
+				break;
+		}
+
 
 	}
 

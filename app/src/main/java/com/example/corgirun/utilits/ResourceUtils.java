@@ -13,7 +13,7 @@ public class ResourceUtils {
 
 	public static ArrayList<Bitmap> spritePlayer;
 	public static ArrayList<Bitmap> spriteDuckDown;
-	public static Bitmap jumpCorgi;
+	public static ArrayList<Bitmap> jumpCorgi;
 
 	public static Bitmap witchAtlas;
 	public static ArrayList<Bitmap> spriteWitch;
@@ -38,6 +38,13 @@ public class ResourceUtils {
 	public static Bitmap buttonsPauseAtlas;
 	public static ArrayList<Bitmap> buttPauseContinue;
 	public static ArrayList<Bitmap> buttPauseExit;
+
+	public static Bitmap buttonsExitAtlas;
+	public static ArrayList<Bitmap> buttExitAgain;
+	public static ArrayList<Bitmap> buttExitExit;
+
+	public static Bitmap buttonsArrowsAtlas;
+	public static ArrayList<Bitmap> buttArrows;
 
 
 	public static Bitmap backPause;

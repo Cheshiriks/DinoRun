@@ -44,6 +44,7 @@ public class TouchListenerPuz implements View.OnTouchListener {
         return true;
     }
 
+    //зона нажатия по У определяется в нижней точке спрайта
     public boolean getTouchUp(int x, int y, int touchWidth, int touchHeight) {
         if (isTouchUp) {
             if (touchX >= x && touchX <= x+touchWidth-1 &&
