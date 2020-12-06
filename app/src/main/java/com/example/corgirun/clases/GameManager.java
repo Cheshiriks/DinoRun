@@ -27,6 +27,7 @@ public class GameManager {
 	private int gameCoins;
 
 	private double speedGame;
+	private int speedLvl;
 
 	Corgi corgi;
 
@@ -59,7 +60,7 @@ public class GameManager {
 	ArrayList<ArrayList<Coin>> coinsList = new ArrayList<>();
 	ObjectPuz lastEnemy;
 
-	public GameManager(CorePuz corePuz, int sceneWidth, int sceneHeight) {
+	public GameManager(CorePuz corePuz, int sceneWidth, int sceneHeight, Type dinoType) {
 		this.maxScreenX = sceneWidth;
 		this.maxScreenY = sceneHeight;
 		this.minScreenX = 0;
@@ -67,7 +68,8 @@ public class GameManager {
 		distance = 0;
 		gameCoins = 0;
 		speedGame = 1;
-		corgi = new Corgi(corePuz, maxScreenX, maxScreenY, minScreenY);
+		speedLvl = 1;
+		corgi = new Corgi(corePuz, maxScreenX, maxScreenY, minScreenY, dinoType);
 
 		witch = new Witch(0, 0.1, 2*maxScreenX, 64, maxScreenX, maxScreenY, Type.WITCH_RED);
 		witch2 = new Witch(0, 0.1, 2*maxScreenX, 64, maxScreenX, maxScreenY, Type.WITCH_GREEN);
@@ -134,43 +136,118 @@ public class GameManager {
 
 	public void update() {
 		if (distance < 240) {
-			generateEnemies(enemiesList, 1);
-			setSpeedGame(1);
+
+			if (distance < 120) {
+				generateEnemies(enemiesList, 1, 200);
+			} else {
+				generateEnemies(enemiesList, 1, 100);
+			}
+
+			if (speedLvl == 1) {
+				setSpeedGame(1);
+				speedLvl = 2;
+			}
 		}
 		else if (distance < 720) {
-			generateEnemies(enemiesList, 1.5);
-			setSpeedGame(1.5);
-			setSpeedEnemiesAndCoins(1.5);
-			corgi.setGRAVITY(-0.235);
-			corgi.setJumpSpeed(5);
-		}
-		else if (distance < 960) {
-			generateEnemies(enemiesList, 2);
-			setSpeedGame(2);
-			setSpeedEnemiesAndCoins(2);
-			corgi.setGRAVITY(-0.3375);
-			corgi.setJumpSpeed(6);
+
+			if (distance < 360) {
+				generateEnemies(enemiesList, 1.5, 200);
+			} else if (distance < 660) {
+				generateEnemies(enemiesList, 1.5, 100);
+			} else {
+				generateEnemies(enemiesList, 1.5, 200);
+			}
+
+			if (speedLvl == 2) {
+				setSpeedGame(1.5);
+				setSpeedEnemiesAndCoins(1.5);
+				corgi.setGRAVITY(-0.235);
+				corgi.setJumpSpeed(5);
+				speedLvl = 3;
+			}
 		}
 		else if (distance < 1440) {
-			generateEnemies(enemiesList, 2.5);
-			setSpeedGame(2.5);
-			setSpeedEnemiesAndCoins(2.5);
-			corgi.setGRAVITY(-0.46);
-			corgi.setJumpSpeed(7);
+
+			if (distance < 840) {
+				generateEnemies(enemiesList, 2, 200);
+			} else if (distance < 1080) {
+				generateEnemies(enemiesList, 2, 100);
+			} else if (distance < 1200) {
+				generateEnemies(enemiesList, 2, 200);
+			} else if (distance < 1320) {
+				generateEnemies(enemiesList, 2, 100);
+			} else {
+				generateEnemies(enemiesList, 2, 200);
+			}
+
+			if (speedLvl == 3) {
+				setSpeedGame(2);
+				setSpeedEnemiesAndCoins(2);
+				corgi.setGRAVITY(-0.3375);
+				corgi.setJumpSpeed(6);
+				speedLvl = 4;
+			}
 		}
-		else if (distance < 1920) {
-			generateEnemies(enemiesList, 3);
-			setSpeedGame(3);
-			setSpeedEnemiesAndCoins(3);
-			corgi.setGRAVITY(-0.6);
-			corgi.setJumpSpeed(8);
+		else if (distance < 2640) {
+
+			if (distance < 1560) {
+				generateEnemies(enemiesList, 2.5, 200);
+			} else if (distance < 1920) {
+				generateEnemies(enemiesList, 2.5, 100);
+			} else if (distance < 2100) {
+				generateEnemies(enemiesList, 2.5, 200);
+			} else if (distance < 2520) {
+				generateEnemies(enemiesList, 2.5, 100);
+			} else {
+				generateEnemies(enemiesList, 2.5, 200);
+			}
+
+			if (speedLvl == 4) {
+				setSpeedGame(2.5);
+				setSpeedEnemiesAndCoins(2.5);
+				corgi.setGRAVITY(-0.46);
+				corgi.setJumpSpeed(7);
+				speedLvl = 5;
+			}
+		}
+		else if (distance < 4080) {
+
+			if (distance < 2880) {
+				generateEnemies(enemiesList, 3, 200);
+			} else if (distance < 3360) {
+				generateEnemies(enemiesList, 3, 100);
+			} else if (distance < 3600) {
+				generateEnemies(enemiesList, 3, 200);
+			} else if (distance < 3840) {
+				generateEnemies(enemiesList, 3, 100);
+			} else {
+				generateEnemies(enemiesList, 3, 200);
+			}
+
+			if (speedLvl == 5) {
+				setSpeedGame(3);
+				setSpeedEnemiesAndCoins(3);
+				corgi.setGRAVITY(-0.6);
+				corgi.setJumpSpeed(8);
+				speedLvl = 6;
+			}
 		}
 		else {
-			generateEnemies(enemiesList, 4);
-			setSpeedGame(4);
-			setSpeedEnemiesAndCoins(4);
-			corgi.setGRAVITY(-0.9);
-			corgi.setJumpSpeed(10);
+
+			if ( (distance / 1000) % 2 == 1 ) {
+				generateEnemies(enemiesList, 4, 120);
+			}
+			else {
+				generateEnemies(enemiesList, 4, 200);
+			}
+
+			if (speedLvl == 6) {
+				setSpeedGame(4);
+				setSpeedEnemiesAndCoins(4);
+				corgi.setGRAVITY(-0.9);
+				corgi.setJumpSpeed(10);
+				speedLvl = -1;
+			}
 		}
 
 		background_1.update();
@@ -254,9 +331,9 @@ public class GameManager {
 	}
 
 	//Определяем пора ли выпустить нового врага
-	private void generateEnemies(ArrayList<ObjectPuz> enemiesList, double speed) {
+	private void generateEnemies(ArrayList<ObjectPuz> enemiesList, double speed, int finalX) {
 
-		if (lastEnemy.getX() < 2*maxScreenX - randomDistance()) {
+		if (lastEnemy.getX() < 2*maxScreenX - randomDistance(finalX)) {
 
 			ArrayList<ObjectPuz> enemiesList2 = new ArrayList<>();
 			for (ObjectPuz enemy : enemiesList) {
@@ -299,8 +376,8 @@ public class GameManager {
 
 	}
 
-	private int randomDistance() {
-		return 200 + (int) (Math.random() * 100);
+	private int randomDistance(int finalX) {
+		return finalX + (int) (Math.random() * 500);
 	}
 
 	private int randomEnemy(int max) {

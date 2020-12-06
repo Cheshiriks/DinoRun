@@ -4,7 +4,9 @@ import android.graphics.Color;
 
 import com.example.corgirun.R;
 import com.example.corgirun.clases.GameManager;
+import com.example.corgirun.clases.GameOverManager;
 import com.example.corgirun.clases.PauseManager;
+import com.example.corgirun.clases.Type;
 import com.example.corgirun.utilits.ResourceUtils;
 import com.example.corgirun.utilits.SettingsGameUtils;
 import com.example.puzzle.CorePuz;
@@ -23,12 +25,16 @@ public class GameScene extends ScenePuz {
     GameState gameState;
     GameManager gameManager;
     PauseManager pauseManager;
+    GameOverManager gameOverManager;
+    Type dinoType;
 
-    public GameScene(CorePuz corePuz) {
+    public GameScene(CorePuz corePuz, Type dinoType) {
         super(corePuz);
+        this.dinoType = dinoType;
         gameState = GameState.READE;
-        gameManager = new GameManager(corePuz, sceneWidth, sceneHeight);
+        gameManager = new GameManager(corePuz, sceneWidth, sceneHeight, dinoType);
         pauseManager = new PauseManager(corePuz, sceneWidth, sceneHeight);
+        gameOverManager = new GameOverManager(corePuz, sceneWidth, sceneHeight);
     }
 
     @Override
@@ -80,8 +86,7 @@ public class GameScene extends ScenePuz {
             gameState = GameState.PAUSE;
         }
         if (gameManager.getCorgi().getHP() <= 0) {
-            gameManager.gameOver(corePuz);
-            gameState = GameState.PAUSE;
+            gameState = GameState.END;
         }
         gameManager.update();
     }
@@ -94,10 +99,10 @@ public class GameScene extends ScenePuz {
 
 
     private void drawingStateRunning() {
-        graphicsPuz.clearScene(Color.BLACK);
+        //graphicsPuz.clearScene(Color.BLACK);
         gameManager.drawing(corePuz, graphicsPuz);
-        graphicsPuz.drawText("HI  " + (int)gameManager.getDistance(), 190, 15, Color.WHITE, 16, ResourceUtils.menuFont);
-        graphicsPuz.drawText("BC  " + (int)gameManager.getGameCoins(), 190, 25, Color.YELLOW, 16, ResourceUtils.menuFont);
+        graphicsPuz.drawText("HI  " + (int)gameManager.getDistance(), 190, 12, Color.WHITE, 16, ResourceUtils.menuFont);
+        graphicsPuz.drawText("BC  " + (int)gameManager.getGameCoins(), 190, 22, Color.YELLOW, 16, ResourceUtils.menuFont);
 
         //----------Debug FPS------------
         graphicsPuz.drawText("FPS " + drawings, 30, 15, Color.WHITE, 16, ResourceUtils.menuFont);
@@ -129,11 +134,20 @@ public class GameScene extends ScenePuz {
     }
 
     private void updateStateEnd() {
-
+        if (gameOverManager.getButtonExitAgain().isTouch(corePuz)) {
+            gameManager.gameOver(corePuz);
+            corePuz.setScene(new GameScene(corePuz, dinoType));
+        }
+        if (gameOverManager.getButtonPauseExit().isTouch(corePuz)) {
+            gameManager.gameOver(corePuz);
+            corePuz.setScene(new MainMenuScene(corePuz));
+        }
+        gameOverManager.update();
     }
 
     private void drawingStateEnd() {
-
+        graphicsPuz.drawTexture(ResourceUtils.backPause, 76, 42);
+        gameOverManager.drawing(corePuz, graphicsPuz);
     }
 
 
