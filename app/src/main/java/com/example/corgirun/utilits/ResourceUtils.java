@@ -15,6 +15,9 @@ public class ResourceUtils {
 	public static ArrayList<Bitmap> spriteDuckDown;
 	public static ArrayList<Bitmap> jumpCorgi;
 
+	public static Bitmap dinosaursAtlas;
+	public static ArrayList<Bitmap> spriteDinosaurs;
+
 	public static Bitmap witchAtlas;
 	public static ArrayList<Bitmap> spriteWitch;
 	public static Bitmap spriteGhost;
@@ -46,8 +49,15 @@ public class ResourceUtils {
 	public static Bitmap buttonsArrowsAtlas;
 	public static ArrayList<Bitmap> buttArrows;
 
+	public static Bitmap buttonsPlayAtlas;
+	public static ArrayList<Bitmap> buttPlay;
+
+	public static Bitmap buttonsCoinsAtlas;
+	public static ArrayList<Bitmap> buttCoins;
 
 	public static Bitmap backPause;
+
+	public static Bitmap lock;
 
 	//шрифты
 	public static Typeface menuFont;
