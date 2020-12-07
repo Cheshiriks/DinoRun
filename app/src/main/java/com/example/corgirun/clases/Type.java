@@ -10,9 +10,9 @@ public enum Type {
 	SLIME_BLUE,
 
 	DINO_VITA,
+	DINO_SANTA,
 	DINO_DOUX,
 	DINO_TARD,
-	DINO_MORT,
-	DINO_SANTA
+	DINO_MORT
 
 }

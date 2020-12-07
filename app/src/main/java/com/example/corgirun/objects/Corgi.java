@@ -77,6 +77,7 @@ public class Corgi extends ObjectPuz {
 						ResourceUtils.spriteDuckDown.get(10),
 						ResourceUtils.spriteDuckDown.get(11)
 				);
+				break;
 			case DINO_TARD:
 				animationSpriteCorgi = new AnimationGamePuz(
 						speed,

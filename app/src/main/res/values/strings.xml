@@ -1,10 +1,5 @@
 <resources>
-    <string name="app_name">CorgiRun</string>
-
-    <string name="main_menu_app_name">Беги, Дино!</string>
-    <string name="main_menu_new_game">НОВАЯ ИГРА</string>
-    <string name="main_menu_settings">НАСТРОЙКИ</string>
-    <string name="main_menu_results">РЕЗУЛЬТАТЫ</string>
+    <string name="app_name">Dino Run 2D</string>
 
     <string name="are_you_ready">Вы готовы?</string>
 </resources>
