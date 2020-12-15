@@ -8,6 +8,7 @@ import com.example.puzzle.CorePuz;
 import com.example.puzzle.GraphicsPuz;
 import com.example.puzzle.ObjectPuz;
 import com.example.corgirun.utilits.ResourceUtils;
+import com.example.puzzle.SoundPuz;
 
 public class Corgi extends ObjectPuz {
 
@@ -21,6 +22,7 @@ public class Corgi extends ObjectPuz {
 	private int jumpSpeed;
 	boolean duckDown;
 	private int HP;
+	private SoundPuz jumpSound;
 
 	public Corgi(CorePuz corePuz, int maxScreenX, int maxScreenY, int minScreenY, Type type) {
 
@@ -37,6 +39,7 @@ public class Corgi extends ObjectPuz {
 		this.corePuz = corePuz;
 		this.maxScreenX = maxScreenX;
 		this.maxScreenY = maxScreenY;
+		jumpSound = corePuz.getAudioPuz().newSound("jump.mp3");
 
 		radius = (ResourceUtils.spritePlayer.get(0).getHeight() - 8) / 2;
 
@@ -162,6 +165,7 @@ public class Corgi extends ObjectPuz {
 			speed = 0;
 			if (jump) {
 				speed = jumpSpeed;
+				jumpSound.play(0.5f);
 			}
 			else {
 				jumpUp = false;
@@ -193,6 +197,7 @@ public class Corgi extends ObjectPuz {
 	private void doJump(int speed) {
 		jump = true;
 		if (!jumpUp) {
+			jumpSound.play(0.5f);
 			this.speed = speed;
 			jumpUp = true;
 		}
@@ -212,6 +217,10 @@ public class Corgi extends ObjectPuz {
 
 	public int getHP() {
 		return HP;
+	}
+
+	public SoundPuz getJumpSound() {
+		return jumpSound;
 	}
 
 	public void setHP(int HP) {

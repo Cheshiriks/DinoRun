@@ -14,6 +14,7 @@ import com.example.corgirun.utilits.SettingsGameUtils;
 import com.example.puzzle.CorePuz;
 import com.example.puzzle.GraphicsPuz;
 import com.example.puzzle.ObjectPuz;
+import com.example.puzzle.SoundPuz;
 import java.util.ArrayList;
 
 public class GameManager {
@@ -28,6 +29,8 @@ public class GameManager {
 
 	private double speedGame;
 	private int speedLvl;
+
+	SoundPuz coinSound;
 
 	Corgi corgi;
 
@@ -69,6 +72,9 @@ public class GameManager {
 		gameCoins = 0;
 		speedGame = 1;
 		speedLvl = 1;
+
+		coinSound = corePuz.getAudioPuz().newSound("coin.mp3");
+
 		corgi = new Corgi(corePuz, maxScreenX, maxScreenY, minScreenY, dinoType);
 
 		witch = new Witch(0, 0.1, 2*maxScreenX, 64, maxScreenX, maxScreenY, Type.WITCH_RED);
@@ -287,6 +293,7 @@ public class GameManager {
 		for (ArrayList<Coin> coinsListNew : coinsList) {
 			for (Coin coin : coinsListNew) {
 				if (CollisionDetect.collisionDetect(corgi, coin)) {
+					coinSound.play(1);
 					coin.setX(2*maxScreenX);
 					coin.setSpeed(0);
 					gameCoins++;
@@ -397,6 +404,12 @@ public class GameManager {
 	public Corgi getCorgi() {
 		return corgi;
 	}
+
+	public SoundPuz getCoinSound() {
+		return coinSound;
+	}
+
+
 
 	public void gameOver(CorePuz corePuz) {
 		SettingsGameUtils.addDistance((int)distance);

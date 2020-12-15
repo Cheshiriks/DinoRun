@@ -19,6 +19,8 @@ public class CorePuz extends AppCompatActivity {
     private ScenePuz scenePuz;
     private TouchListenerPuz touchListenerPuz;
 
+    private AudioPuz audioPuz;
+
     private Display display;
     private Point sizeDisplay;
     private Bitmap frameBuffer;
@@ -57,6 +59,8 @@ public class CorePuz extends AppCompatActivity {
         graphicsPuz = new GraphicsPuz(getAssets(), frameBuffer);
         touchListenerPuz = new TouchListenerPuz(loopPuz, sceneWidth, sceneHeight);
 
+        audioPuz = new AudioPuz(this);
+
         scenePuz = getStartScene();
 
         stateOnPause = false;
@@ -84,6 +88,10 @@ public class CorePuz extends AppCompatActivity {
         if (isFinishing()) {
             scenePuz.dispose();
         }
+    }
+
+    public AudioPuz getAudioPuz() {
+        return audioPuz;
     }
 
     public TouchListenerPuz getTouchListenerPuz() {

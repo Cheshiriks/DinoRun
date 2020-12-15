@@ -5,6 +5,7 @@ public abstract class ButtonPuz extends ObjectPuz {
 	final protected CorePuz corePuz;
 	protected AnimationButtonPuz animationButton;
 	protected boolean buttonOn;
+	protected SoundPuz buttonSound;
 
 	public ButtonPuz(CorePuz corePuz) {
 		this.corePuz = corePuz;
