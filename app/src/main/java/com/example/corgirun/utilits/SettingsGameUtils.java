@@ -7,6 +7,7 @@ public class SettingsGameUtils {
 
 	public static int distance = 0;
 	public static int coins = 0;
+	public static boolean training = true;
 
 	public static boolean vita = true;
 	public static boolean santa = false;
@@ -20,6 +21,7 @@ public class SettingsGameUtils {
 		editor.clear(); //очищаем файл
 		editor.putInt("passedDistance", distance);
 		editor.putInt("gameCoins", coins);
+		editor.putBoolean("isTraining", training);
 
 		editor.putBoolean("dinoSanta", santa);
 		editor.putBoolean("dinoDoux", doux);
@@ -30,6 +32,7 @@ public class SettingsGameUtils {
 	public static void loadSettings(CorePuz corePuz) {
 		distance = corePuz.getSharedPreferences().getInt("passedDistance", distance);
 		coins = corePuz.getSharedPreferences().getInt("gameCoins", coins);
+		training = corePuz.getSharedPreferences().getBoolean("isTraining", training);
 
 		santa = corePuz.getSharedPreferences().getBoolean("dinoSanta", santa);
 		tard = corePuz.getSharedPreferences().getBoolean("dinoDoux", doux);
@@ -40,6 +43,14 @@ public class SettingsGameUtils {
 		if (distance < values) {
 			distance = values;
 		}
+	}
+
+	public static void setTraining(boolean training) {
+		SettingsGameUtils.training = training;
+	}
+
+	public static boolean isTraining() {
+		return training;
 	}
 
 	public static void setCoins(int values) {

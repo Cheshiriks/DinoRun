@@ -2,6 +2,8 @@ package com.example.corgirun.utilits;
 
 import android.graphics.Bitmap;
 import android.graphics.Typeface;
+import com.example.puzzle.MusicPuz;
+import com.example.puzzle.SoundPuz;
 import java.util.ArrayList;
 
 public class ResourceUtils {
@@ -10,6 +12,7 @@ public class ResourceUtils {
 	public static Bitmap textureAtlas;
 	public static Bitmap background;
 	public static Bitmap menu;
+	public static Bitmap training;
 
 	public static ArrayList<Bitmap> spritePlayer;
 	public static ArrayList<Bitmap> spriteDuckDown;
@@ -61,5 +64,12 @@ public class ResourceUtils {
 
 	//шрифты
 	public static Typeface menuFont;
+
+	//звуки и музыка
+	public static MusicPuz gameMusic;
+	public static SoundPuz coin;
+	public static SoundPuz jump;
+	public static SoundPuz button;
+	public static SoundPuz gameOver;
 
 }

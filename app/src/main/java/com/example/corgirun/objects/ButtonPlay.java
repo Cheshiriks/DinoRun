@@ -4,6 +4,7 @@ import com.example.corgirun.utilits.ResourceUtils;
 import com.example.puzzle.AnimationButtonPuz;
 import com.example.puzzle.ButtonPuz;
 import com.example.puzzle.CorePuz;
+import com.example.puzzle.SoundPuz;
 
 public class ButtonPlay extends ButtonPuz {
 
@@ -12,6 +13,7 @@ public class ButtonPlay extends ButtonPuz {
 		this.x = x;
 		this.y = y;
 		buttonOn = false;
+		buttonSound = corePuz.getAudioPuz().newSound("button.wav");
 		animationButton = new AnimationButtonPuz(
 				ResourceUtils.buttPlay.get(0),
 				ResourceUtils.buttPlay.get(1)
@@ -22,6 +24,9 @@ public class ButtonPlay extends ButtonPuz {
 	public boolean isTouch(CorePuz corePuz) {
 
 		if (corePuz.getTouchListenerPuz().getTouchDown((int)x + 1, (int)y + 21, 21, 21)) {
+			if (!buttonOn) {
+				buttonSound.play(1f);
+			}
 			buttonOn = true;
 			return false;
 		}
@@ -32,4 +37,9 @@ public class ButtonPlay extends ButtonPuz {
 		return false;
 
 	}
+
+	public SoundPuz getButtonSound() {
+		return buttonSound;
+	}
+
 }

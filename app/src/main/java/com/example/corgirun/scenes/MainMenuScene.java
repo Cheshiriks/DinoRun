@@ -8,7 +8,6 @@ import static com.example.corgirun.clases.Type.DINO_VITA;
 
 import android.graphics.Color;
 
-import com.example.corgirun.R;
 import com.example.corgirun.clases.MainMenuManager;
 import com.example.corgirun.objects.Dinosaurs;
 import com.example.corgirun.utilits.ResourceUtils;
@@ -122,6 +121,11 @@ public class MainMenuScene extends ScenePuz {
 
     @Override
     public void dispose() {
-
+        mainMenuManager.getButtonRight().getButtonSound().dispose();
+        mainMenuManager.getButtonLeft().getButtonSound().dispose();
+        mainMenuManager.getButtonPlay().getButtonSound().dispose();
+        mainMenuManager.getCoins500().getButtonSound().dispose();
+        mainMenuManager.getCoins1000().getButtonSound().dispose();
+        mainMenuManager.getCoins3000().getButtonSound().dispose();
     }
 }

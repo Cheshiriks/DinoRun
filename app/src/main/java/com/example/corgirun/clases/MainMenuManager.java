@@ -8,7 +8,6 @@ import com.example.corgirun.objects.Dinosaurs;
 import com.example.corgirun.objects.Fire;
 import com.example.corgirun.utilits.ResourceUtils;
 import com.example.corgirun.utilits.SettingsGameUtils;
-import com.example.puzzle.ButtonPuz;
 import com.example.puzzle.CorePuz;
 import com.example.puzzle.GraphicsPuz;
 
@@ -28,7 +27,6 @@ public class MainMenuManager {
 	private ButtonCoins coins500;
 	private ButtonCoins coins1000;
 	private ButtonCoins coins3000;
-	private ButtonPuz button;
 
 	private ButtonPlay buttonPlay;
 

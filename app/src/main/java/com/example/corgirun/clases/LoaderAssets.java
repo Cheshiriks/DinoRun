@@ -44,8 +44,18 @@ public class LoaderAssets {
 
 		loadCoin(graphicsPuz);
 
+		//загружаем звукки и музыку
+		loadAudio(corePuz);
+
 		//загружаем настройки и сохранения
 		SettingsGameUtils.loadSettings(corePuz);
+	}
+
+	private void loadAudio(CorePuz corePuz) {
+		//ResourceUtils.gameMusic = corePuz.getAudioPuz().newMusic("horror.mp3");
+		//ResourceUtils.coin = corePuz.getAudioPuz().newSound("coin.mp3");
+		//ResourceUtils.jump = corePuz.getAudioPuz().newSound("jump.mp3");
+
 	}
 
 	private void loadTexture(GraphicsPuz graphicsPuz) {
@@ -247,11 +257,12 @@ public class LoaderAssets {
 	//загружаем подсвечник----end
 
 
-	//загружаем меню----start
+	//загружаем меню и экран обучения ----start
 	private void loadMenu(GraphicsPuz graphicsPuz) {
 		ResourceUtils.menu = graphicsPuz.newTexture("menu.png");
+		ResourceUtils.training = graphicsPuz.newTexture("training.png");
 	}
-	//загружаем меню----end
+	//загружаем меню и экран обучения ----end
 
 	private void loadButton(GraphicsPuz graphicsPuz) {
 
