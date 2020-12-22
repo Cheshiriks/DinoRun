@@ -23,14 +23,14 @@ public class ButtonPauseExit extends ButtonPuz {
 	@Override
 	public boolean isTouch(CorePuz corePuz) {
 
-		if (corePuz.getTouchListenerPuz().getTouchDown(90, 84, 58, 15)) {
+		if (corePuz.getTouchListenerPuz().getTouchDown((int)x + 1, (int)y + 16, 58, 15)) {
 			if (!buttonOn) {
 				buttonSound.play(1f);
 			}
 			buttonOn = true;
 			return false;
 		}
-		if (corePuz.getTouchListenerPuz().getTouchUp(90, 84, 58, 15)) {
+		if (corePuz.getTouchListenerPuz().getTouchUp((int)x + 1, (int)y + 16, 58, 15)) {
 			buttonOn = false;
 			return true;
 		}

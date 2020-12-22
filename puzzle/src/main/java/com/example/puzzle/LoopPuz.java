@@ -60,13 +60,13 @@ public class LoopPuz extends SurfaceView implements Runnable {
                 drawingGame();
                 delta--;
             }
-            if (System.currentTimeMillis() - timer > 1000) {
+/*            if (System.currentTimeMillis() - timer > 1000) {
                 Date date = new Date();
                 System.out.println("updates " + updates + "drawing " + drawing + " " + date.toString());
                 updates = 0;
                 drawing = 0;
                 timer += 1000;
-            }
+            }*/
         }
 
     }

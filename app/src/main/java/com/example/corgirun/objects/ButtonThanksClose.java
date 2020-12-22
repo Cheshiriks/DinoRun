@@ -6,31 +6,31 @@ import com.example.puzzle.ButtonPuz;
 import com.example.puzzle.CorePuz;
 import com.example.puzzle.SoundPuz;
 
-public class ButtonExitAgain extends ButtonPuz {
+public class ButtonThanksClose  extends ButtonPuz {
 
-	public ButtonExitAgain(CorePuz corePuz, int x, int y) {
+	public ButtonThanksClose(CorePuz corePuz, int x, int y) {
 		super(corePuz);
 		this.x = x;
 		this.y = y;
 		buttonOn = false;
 		buttonSound = corePuz.getAudioPuz().newSound("button.wav");
 		animationButton = new AnimationButtonPuz(
-				ResourceUtils.buttExitAgain.get(0),
-				ResourceUtils.buttExitAgain.get(1)
+				ResourceUtils.buttThanksClose.get(0),
+				ResourceUtils.buttThanksClose.get(1)
 		);
 	}
 
 	@Override
 	public boolean isTouch(CorePuz corePuz) {
 
-		if (corePuz.getTouchListenerPuz().getTouchDown((int)x + 1, (int)y + 16, 58, 15)) {
+		if (corePuz.getTouchListenerPuz().getTouchDown(154, 52, 14, 14)) {
 			if (!buttonOn) {
 				buttonSound.play(1f);
 			}
 			buttonOn = true;
 			return false;
 		}
-		if (corePuz.getTouchListenerPuz().getTouchUp((int)x + 1, (int)y + 16, 58, 15)) {
+		if (corePuz.getTouchListenerPuz().getTouchUp(154, 52, 14, 14)) {
 			buttonOn = false;
 			return true;
 		}

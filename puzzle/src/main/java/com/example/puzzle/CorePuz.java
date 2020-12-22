@@ -8,6 +8,11 @@ import android.view.Display;
 import android.view.WindowManager;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
 public class CorePuz extends AppCompatActivity {
 
@@ -35,6 +40,9 @@ public class CorePuz extends AppCompatActivity {
     private SharedPreferences sharedPreferences;
 
     private final String SETTINGS = "settings";
+
+    //реклама
+    private InterstitialAd mInterstitialAd;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -67,6 +75,17 @@ public class CorePuz extends AppCompatActivity {
         stateOnResume = false;
 
         setContentView(loopPuz);
+
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId("id вашей рекламы");
+        mInterstitialAd.loadAd(new AdRequest.Builder().build());
+
     }
 
     public CorePuz() {
@@ -108,6 +127,10 @@ public class CorePuz extends AppCompatActivity {
 
     public ScenePuz getStartScene() {
         return scenePuz;
+    }
+
+    public InterstitialAd getmInterstitialAd() {
+        return mInterstitialAd;
     }
 
     public void setScene(ScenePuz scenePuz) {

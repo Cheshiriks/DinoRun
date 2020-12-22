@@ -13,6 +13,7 @@ public enum Type {
 	DINO_SANTA,
 	DINO_DOUX,
 	DINO_TARD,
-	DINO_MORT
+	DINO_MORT,
+	DINO_NEG
 
 }

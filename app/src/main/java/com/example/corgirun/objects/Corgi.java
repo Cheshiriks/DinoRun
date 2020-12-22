@@ -18,9 +18,9 @@ public class Corgi extends ObjectPuz {
 	final private CorePuz corePuz;
 	AnimationGamePuz animationSpriteCorgi;
 	boolean jump;
-	boolean jumpUp;
+	private boolean jumpUp;
 	private int jumpSpeed;
-	boolean duckDown;
+	private boolean duckDown;
 	private int HP;
 	private SoundPuz jumpSound;
 
@@ -135,6 +135,24 @@ public class Corgi extends ObjectPuz {
 						ResourceUtils.spriteDuckDown.get(29)
 				);
 				break;
+			case DINO_NEG:
+				animationSpriteCorgi = new AnimationGamePuz(
+						speed,
+						ResourceUtils.spritePlayer.get(30),
+						ResourceUtils.spritePlayer.get(31),
+						ResourceUtils.spritePlayer.get(32),
+						ResourceUtils.spritePlayer.get(33),
+						ResourceUtils.spritePlayer.get(34),
+						ResourceUtils.spritePlayer.get(35),
+						ResourceUtils.jumpCorgi.get(5),
+						ResourceUtils.spriteDuckDown.get(30),
+						ResourceUtils.spriteDuckDown.get(31),
+						ResourceUtils.spriteDuckDown.get(32),
+						ResourceUtils.spriteDuckDown.get(33),
+						ResourceUtils.spriteDuckDown.get(34),
+						ResourceUtils.spriteDuckDown.get(35)
+				);
+				break;
 		}
 
 
@@ -233,6 +251,14 @@ public class Corgi extends ObjectPuz {
 
 	public boolean isJump() {
 		return jump;
+	}
+
+	public void setJump(boolean jump) {
+		this.jump = jump;
+	}
+
+	public void setDuckDown(boolean duckDown) {
+		this.duckDown = duckDown;
 	}
 
 	public void setGRAVITY(double GRAVITY) {

@@ -41,6 +41,12 @@ public class ResourceUtils {
 	public static Bitmap buttPauseAtlas;
 	public static ArrayList<Bitmap> buttPause;
 
+	public static Bitmap buttQuesAtlas;
+	public static ArrayList<Bitmap> buttQues;
+
+	public static Bitmap buttThanksCloseAtlas;
+	public static ArrayList<Bitmap> buttThanksClose;
+
 	public static Bitmap buttonsPauseAtlas;
 	public static ArrayList<Bitmap> buttPauseContinue;
 	public static ArrayList<Bitmap> buttPauseExit;
@@ -48,6 +54,9 @@ public class ResourceUtils {
 	public static Bitmap buttonsExitAtlas;
 	public static ArrayList<Bitmap> buttExitAgain;
 	public static ArrayList<Bitmap> buttExitExit;
+	public static ArrayList<Bitmap> buttExit100;
+	public static ArrayList<Bitmap> buttExitAd;
+	public static ArrayList<Bitmap> buttExitX2coin;
 
 	public static Bitmap buttonsArrowsAtlas;
 	public static ArrayList<Bitmap> buttArrows;
@@ -59,6 +68,8 @@ public class ResourceUtils {
 	public static ArrayList<Bitmap> buttCoins;
 
 	public static Bitmap backPause;
+	public static Bitmap backEnd;
+	public static Bitmap thanks;
 
 	public static Bitmap lock;
 
