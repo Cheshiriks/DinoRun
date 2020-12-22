@@ -101,6 +101,12 @@ public class LoaderAssets {
 		ResourceUtils.spritePlayer.add(graphicsPuz.newSprite(ResourceUtils.textureAtlas, 192, 96, 24, 24));
 		ResourceUtils.spritePlayer.add(graphicsPuz.newSprite(ResourceUtils.textureAtlas, 216, 96, 24, 24));
 
+		ResourceUtils.spritePlayer.add(graphicsPuz.newSprite(ResourceUtils.textureAtlas, 96, 120, 24, 24));
+		ResourceUtils.spritePlayer.add(graphicsPuz.newSprite(ResourceUtils.textureAtlas, 120, 120, 24, 24));
+		ResourceUtils.spritePlayer.add(graphicsPuz.newSprite(ResourceUtils.textureAtlas, 144, 120, 24, 24));
+		ResourceUtils.spritePlayer.add(graphicsPuz.newSprite(ResourceUtils.textureAtlas, 168, 120, 24, 24));
+		ResourceUtils.spritePlayer.add(graphicsPuz.newSprite(ResourceUtils.textureAtlas, 192, 120, 24, 24));
+		ResourceUtils.spritePlayer.add(graphicsPuz.newSprite(ResourceUtils.textureAtlas, 216, 120, 24, 24));
 	}
 
 	private void loadTextureDuckDown(GraphicsPuz graphicsPuz) {
@@ -142,6 +148,13 @@ public class LoaderAssets {
 		ResourceUtils.spriteDuckDown.add(graphicsPuz.newSprite(ResourceUtils.textureAtlas, 528, 96, 24, 24));
 		ResourceUtils.spriteDuckDown.add(graphicsPuz.newSprite(ResourceUtils.textureAtlas, 552, 96, 24, 24));
 
+		ResourceUtils.spriteDuckDown.add(graphicsPuz.newSprite(ResourceUtils.textureAtlas, 432, 120, 24, 24));
+		ResourceUtils.spriteDuckDown.add(graphicsPuz.newSprite(ResourceUtils.textureAtlas, 456, 120, 24, 24));
+		ResourceUtils.spriteDuckDown.add(graphicsPuz.newSprite(ResourceUtils.textureAtlas, 480, 120, 24, 24));
+		ResourceUtils.spriteDuckDown.add(graphicsPuz.newSprite(ResourceUtils.textureAtlas, 504, 120, 24, 24));
+		ResourceUtils.spriteDuckDown.add(graphicsPuz.newSprite(ResourceUtils.textureAtlas, 528, 120, 24, 24));
+		ResourceUtils.spriteDuckDown.add(graphicsPuz.newSprite(ResourceUtils.textureAtlas, 552, 120, 24, 24));
+
 	}
 
 	private void loadTextureJump(GraphicsPuz graphicsPuz) {
@@ -153,6 +166,7 @@ public class LoaderAssets {
 		ResourceUtils.jumpCorgi.add(graphicsPuz.newSprite(ResourceUtils.textureAtlas, 240, 48, 24, 24));
 		ResourceUtils.jumpCorgi.add(graphicsPuz.newSprite(ResourceUtils.textureAtlas, 240, 72, 24, 24));
 		ResourceUtils.jumpCorgi.add(graphicsPuz.newSprite(ResourceUtils.textureAtlas, 240, 96, 24, 24));
+		ResourceUtils.jumpCorgi.add(graphicsPuz.newSprite(ResourceUtils.textureAtlas, 240, 120, 24, 24));
 	}
 
 	private void loadDinosaurs(GraphicsPuz graphicsPuz) {
@@ -165,6 +179,7 @@ public class LoaderAssets {
 		ResourceUtils.spriteDinosaurs.add(graphicsPuz.newSprite(ResourceUtils.dinosaursAtlas, 96, 0, 48, 60));
 		ResourceUtils.spriteDinosaurs.add(graphicsPuz.newSprite(ResourceUtils.dinosaursAtlas, 144, 0, 48, 60));
 		ResourceUtils.spriteDinosaurs.add(graphicsPuz.newSprite(ResourceUtils.dinosaursAtlas, 192, 0, 48, 60));
+		ResourceUtils.spriteDinosaurs.add(graphicsPuz.newSprite(ResourceUtils.dinosaursAtlas, 240, 0, 48, 60));
 
 	}
 
@@ -272,14 +287,26 @@ public class LoaderAssets {
 		ResourceUtils.buttPause.add(graphicsPuz.newSprite(ResourceUtils.buttPauseAtlas, 0, 0, 20, 20));
 		ResourceUtils.buttPause.add(graphicsPuz.newSprite(ResourceUtils.buttPauseAtlas, 0, 20, 20, 20));
 
+		ResourceUtils.buttQuesAtlas = graphicsPuz.newTexture("butt_ques.png");
+
+		ResourceUtils.buttQues = new ArrayList<>();
+		ResourceUtils.buttQues.add(graphicsPuz.newSprite(ResourceUtils.buttQuesAtlas, 0, 0, 15, 15));
+		ResourceUtils.buttQues.add(graphicsPuz.newSprite(ResourceUtils.buttQuesAtlas, 0, 15, 15, 15));
+
+		ResourceUtils.buttThanksCloseAtlas = graphicsPuz.newTexture("butt_thanks_close.png");
+
+		ResourceUtils.buttThanksClose = new ArrayList<>();
+		ResourceUtils.buttThanksClose.add(graphicsPuz.newSprite(ResourceUtils.buttThanksCloseAtlas, 0, 0, 15, 15));
+		ResourceUtils.buttThanksClose.add(graphicsPuz.newSprite(ResourceUtils.buttThanksCloseAtlas, 0, 15, 15, 15));
+
 		ResourceUtils.buttonsPauseAtlas = graphicsPuz.newTexture("butt_menu_pause.png");
 
 		ResourceUtils.buttPauseContinue = new ArrayList<>();
 		ResourceUtils.buttPauseContinue.add(graphicsPuz.newSprite(ResourceUtils.buttonsPauseAtlas, 1, 1, 58, 15));
 		ResourceUtils.buttPauseContinue.add(graphicsPuz.newSprite(ResourceUtils.buttonsPauseAtlas, 64, 1, 58, 15));
 		ResourceUtils.buttPauseExit = new ArrayList<>();
-		ResourceUtils.buttPauseExit.add(graphicsPuz.newSprite(ResourceUtils.buttonsPauseAtlas, 1, 20, 58, 15));
-		ResourceUtils.buttPauseExit.add(graphicsPuz.newSprite(ResourceUtils.buttonsPauseAtlas, 64, 20, 58, 15));
+		ResourceUtils.buttPauseExit.add(graphicsPuz.newSprite(ResourceUtils.buttonsPauseAtlas, 1, 19, 58, 15));
+		ResourceUtils.buttPauseExit.add(graphicsPuz.newSprite(ResourceUtils.buttonsPauseAtlas, 64, 19, 58, 15));
 
 		ResourceUtils.buttonsExitAtlas = graphicsPuz.newTexture("butt_menu_exit.png");
 
@@ -287,8 +314,17 @@ public class LoaderAssets {
 		ResourceUtils.buttExitAgain.add(graphicsPuz.newSprite(ResourceUtils.buttonsExitAtlas, 1, 1, 58, 15));
 		ResourceUtils.buttExitAgain.add(graphicsPuz.newSprite(ResourceUtils.buttonsExitAtlas, 64, 1, 58, 15));
 		ResourceUtils.buttExitExit = new ArrayList<>();
-		ResourceUtils.buttExitExit.add(graphicsPuz.newSprite(ResourceUtils.buttonsExitAtlas, 1, 20, 58, 15));
-		ResourceUtils.buttExitExit.add(graphicsPuz.newSprite(ResourceUtils.buttonsExitAtlas, 64, 20, 58, 15));
+		ResourceUtils.buttExitExit.add(graphicsPuz.newSprite(ResourceUtils.buttonsExitAtlas, 1, 18, 58, 15));
+		ResourceUtils.buttExitExit.add(graphicsPuz.newSprite(ResourceUtils.buttonsExitAtlas, 64, 18, 58, 15));
+		ResourceUtils.buttExit100 = new ArrayList<>();
+		ResourceUtils.buttExit100.add(graphicsPuz.newSprite(ResourceUtils.buttonsExitAtlas, 1, 35, 58, 15));
+		ResourceUtils.buttExit100.add(graphicsPuz.newSprite(ResourceUtils.buttonsExitAtlas, 64, 35, 58, 15));
+		ResourceUtils.buttExitAd = new ArrayList<>();
+		ResourceUtils.buttExitAd.add(graphicsPuz.newSprite(ResourceUtils.buttonsExitAtlas, 1, 52, 58, 15));
+		ResourceUtils.buttExitAd.add(graphicsPuz.newSprite(ResourceUtils.buttonsExitAtlas, 64, 52, 58, 15));
+		ResourceUtils.buttExitX2coin = new ArrayList<>();
+		ResourceUtils.buttExitX2coin.add(graphicsPuz.newSprite(ResourceUtils.buttonsExitAtlas, 1, 69, 58, 15));
+		ResourceUtils.buttExitX2coin.add(graphicsPuz.newSprite(ResourceUtils.buttonsExitAtlas, 64, 69, 58, 15));
 
 		ResourceUtils.buttonsArrowsAtlas = graphicsPuz.newTexture("butt_arrows.png");
 
@@ -313,12 +349,16 @@ public class LoaderAssets {
 		ResourceUtils.buttCoins.add(graphicsPuz.newSprite(ResourceUtils.buttonsCoinsAtlas, 58, 15, 58, 15));
 		ResourceUtils.buttCoins.add(graphicsPuz.newSprite(ResourceUtils.buttonsCoinsAtlas, 0, 30, 58, 15));
 		ResourceUtils.buttCoins.add(graphicsPuz.newSprite(ResourceUtils.buttonsCoinsAtlas, 58, 30, 58, 15));
+		ResourceUtils.buttCoins.add(graphicsPuz.newSprite(ResourceUtils.buttonsCoinsAtlas, 0, 45, 58, 15));
+		ResourceUtils.buttCoins.add(graphicsPuz.newSprite(ResourceUtils.buttonsCoinsAtlas, 58, 45, 58, 15));
 
 	}
 
 	private void loadOther(GraphicsPuz graphicsPuz) {
 
+		ResourceUtils.thanks = graphicsPuz.newTexture("thanks.png");
 		ResourceUtils.backPause = graphicsPuz.newTexture("back_pause.png");
+		ResourceUtils.backEnd = graphicsPuz.newTexture("back_end.png");
 		ResourceUtils.lock = graphicsPuz.newTexture("lock.png");
 
 		if (VERSION.SDK_INT >= VERSION_CODES.O) {

@@ -11,6 +11,8 @@ import com.example.corgirun.utilits.SettingsGameUtils;
 import com.example.puzzle.CorePuz;
 import com.example.puzzle.MusicPuz;
 import com.example.puzzle.ScenePuz;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
 import java.util.Date;
 
 public class GameScene extends ScenePuz {
@@ -150,16 +152,29 @@ public class GameScene extends ScenePuz {
             gameManager.gameOver(corePuz);
             corePuz.setScene(new GameScene(corePuz, dinoType));
         }
-        if (gameOverManager.getButtonPauseExit().isTouch(corePuz)) {
+        if (gameOverManager.getButtonExitExit().isTouch(corePuz)) {
             music.dispose();
             gameManager.gameOver(corePuz);
             corePuz.setScene(new MainMenuScene(corePuz));
+        }
+        if (gameOverManager.getButtonExitX2Coin().isTouch(corePuz)) {
+            runExitX2coin();
+        }
+        if (gameOverManager.getButtonExit100().isTouch(corePuz)) {
+            if (gameManager.isCoin()) {
+                gameManager.addHP();
+                gameManager.minusCoin(100);
+                music.play(true, 2f);
+                gameState = GameState.RUNNING;
+            }
+        }
+        if (gameOverManager.getButtonExitAd().isTouch(corePuz)) {
+            runExitAd();
         }
         gameOverManager.update();
     }
 
     private void drawingStateEnd() {
-        graphicsPuz.drawTexture(ResourceUtils.backPause, 76, 42);
         gameOverManager.drawing(corePuz, graphicsPuz);
     }
 
@@ -182,8 +197,68 @@ public class GameScene extends ScenePuz {
 
         gameManager.getButtonPause().getButtonSound().dispose();
         gameOverManager.getButtonExitAgain().getButtonSound().dispose();
-        gameOverManager.getButtonPauseExit().getButtonSound().dispose();
+        gameOverManager.getButtonExitExit().getButtonSound().dispose();
+        gameOverManager.getButtonExit100().getButtonSound().dispose();
+        gameOverManager.getButtonExitAd().getButtonSound().dispose();
+        gameOverManager.getButtonExitX2Coin().getButtonSound().dispose();
         pauseManager.getButtonPauseContinue().getButtonSound().dispose();
         pauseManager.getButtonPauseExit().getButtonSound().dispose();
     }
+
+    private void runExitX2coin() {
+        corePuz.runOnUiThread(new Runnable() {
+            @Override public void run() {
+
+                if (!corePuz.getmInterstitialAd().isLoaded() || !corePuz.getmInterstitialAd().isLoading()) {
+                    corePuz.getmInterstitialAd().loadAd(new AdRequest.Builder().build());
+                }
+
+                if (corePuz.getmInterstitialAd().isLoaded()) {
+
+                    music.dispose();
+                    gameManager.gameOverX2(corePuz);
+                    corePuz.setScene(new MainMenuScene(corePuz));
+
+                    corePuz.getmInterstitialAd().show();
+                    corePuz.getmInterstitialAd().loadAd(new AdRequest.Builder().build());
+                }
+
+                corePuz.getmInterstitialAd().setAdListener(new AdListener() {
+                    @Override
+                    public void onAdClosed() {
+                        corePuz.getmInterstitialAd().loadAd(new AdRequest.Builder().build());
+                    }
+                });
+            }
+        });
+    }
+
+    private void runExitAd() {
+        corePuz.runOnUiThread(new Runnable() {
+            @Override public void run() {
+
+                if (!corePuz.getmInterstitialAd().isLoaded() || !corePuz.getmInterstitialAd().isLoading()) {
+                    corePuz.getmInterstitialAd().loadAd(new AdRequest.Builder().build());
+                }
+
+                if (corePuz.getmInterstitialAd().isLoaded()) {
+
+                    music.play(true, 2f);
+                    gameState = GameState.RUNNING;
+                    gameManager.addHP();
+
+                    corePuz.getmInterstitialAd().show();
+                    corePuz.getmInterstitialAd().loadAd(new AdRequest.Builder().build());
+                }
+
+                corePuz.getmInterstitialAd().setAdListener(new AdListener() {
+                    @Override
+                    public void onAdClosed() {
+                        corePuz.getmInterstitialAd().loadAd(new AdRequest.Builder().build());
+                    }
+                });
+            }
+        });
+    }
+
 }

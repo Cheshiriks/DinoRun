@@ -14,6 +14,7 @@ public class SettingsGameUtils {
 	public static boolean mort = true;
 	public static boolean doux = false;
 	public static boolean tard = false;
+	public static boolean neg = false;
 
 
 	public static void saveSettings(CorePuz corePuz) {
@@ -26,6 +27,7 @@ public class SettingsGameUtils {
 		editor.putBoolean("dinoSanta", santa);
 		editor.putBoolean("dinoDoux", doux);
 		editor.putBoolean("dinoTard", tard);
+		editor.putBoolean("dinoNeg", neg);
 		editor.apply(); //сохраняем в файл
 	}
 
@@ -35,8 +37,9 @@ public class SettingsGameUtils {
 		training = corePuz.getSharedPreferences().getBoolean("isTraining", training);
 
 		santa = corePuz.getSharedPreferences().getBoolean("dinoSanta", santa);
-		tard = corePuz.getSharedPreferences().getBoolean("dinoDoux", doux);
-		mort = corePuz.getSharedPreferences().getBoolean("dinoTard", tard);
+		doux = corePuz.getSharedPreferences().getBoolean("dinoDoux", doux);
+		tard = corePuz.getSharedPreferences().getBoolean("dinoTard", tard);
+		neg = corePuz.getSharedPreferences().getBoolean("dinoNeg", neg);
 	}
 
 	public static void addDistance(int values) {
@@ -67,6 +70,9 @@ public class SettingsGameUtils {
 		if (dino == 4) {
 			tard = isBought;
 		}
+		if (dino == 5) {
+			neg = isBought;
+		}
 	}
 
 	public static boolean getIsBought(int dino) {
@@ -78,6 +84,9 @@ public class SettingsGameUtils {
 		}
 		if (dino == 4) {
 			return tard;
+		}
+		if (dino == 5) {
+			return neg;
 		}
 		return true;
 	}

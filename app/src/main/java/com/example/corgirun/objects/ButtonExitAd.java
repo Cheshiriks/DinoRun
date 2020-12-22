@@ -6,17 +6,17 @@ import com.example.puzzle.ButtonPuz;
 import com.example.puzzle.CorePuz;
 import com.example.puzzle.SoundPuz;
 
-public class ButtonExitAgain extends ButtonPuz {
+public class ButtonExitAd extends ButtonPuz {
 
-	public ButtonExitAgain(CorePuz corePuz, int x, int y) {
+	public ButtonExitAd(CorePuz corePuz, int x, int y) {
 		super(corePuz);
 		this.x = x;
 		this.y = y;
 		buttonOn = false;
 		buttonSound = corePuz.getAudioPuz().newSound("button.wav");
 		animationButton = new AnimationButtonPuz(
-				ResourceUtils.buttExitAgain.get(0),
-				ResourceUtils.buttExitAgain.get(1)
+				ResourceUtils.buttExitAd.get(0),
+				ResourceUtils.buttExitAd.get(1)
 		);
 	}
 

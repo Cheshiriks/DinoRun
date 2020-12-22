@@ -165,6 +165,7 @@ public class GameManager {
 			}
 
 			if (speedLvl == 2) {
+				speedGame = 1.5;
 				setSpeedGame(1.5);
 				setSpeedEnemiesAndCoins(1.5);
 				corgi.setGRAVITY(-0.235);
@@ -187,6 +188,7 @@ public class GameManager {
 			}
 
 			if (speedLvl == 3) {
+				speedGame = 2;
 				setSpeedGame(2);
 				setSpeedEnemiesAndCoins(2);
 				corgi.setGRAVITY(-0.3375);
@@ -209,6 +211,7 @@ public class GameManager {
 			}
 
 			if (speedLvl == 4) {
+				speedGame = 2.5;
 				setSpeedGame(2.5);
 				setSpeedEnemiesAndCoins(2.5);
 				corgi.setGRAVITY(-0.46);
@@ -231,6 +234,7 @@ public class GameManager {
 			}
 
 			if (speedLvl == 5) {
+				speedGame = 3;
 				setSpeedGame(3);
 				setSpeedEnemiesAndCoins(3);
 				corgi.setGRAVITY(-0.6);
@@ -240,14 +244,15 @@ public class GameManager {
 		}
 		else {
 
-			if ( (distance / 1000) % 2 == 1 ) {
-				generateEnemies(enemiesList, 4, 120);
+			if ( (distance / 500) % 2 == 1 ) {
+				generateEnemies(enemiesList, 4, 70);
 			}
 			else {
-				generateEnemies(enemiesList, 4, 200);
+				generateEnemies(enemiesList, 4, 150);
 			}
 
 			if (speedLvl == 6) {
+				speedGame = 4;
 				setSpeedGame(4);
 				setSpeedEnemiesAndCoins(4);
 				corgi.setGRAVITY(-0.9);
@@ -360,6 +365,40 @@ public class GameManager {
 		}
 	}
 
+	public void minusCoin(int coins) {
+
+		if (gameCoins >= 100) {
+			gameCoins -= coins;
+		}
+
+		else if (gameCoins > 0) {
+			int delta = coins - gameCoins;
+			gameCoins = 0;
+			SettingsGameUtils.setCoins(-delta);
+		}
+
+		else if (SettingsGameUtils.coins >= 100) {
+			SettingsGameUtils.setCoins(-coins);
+		}
+
+	}
+
+	public boolean isCoin() {
+		return (SettingsGameUtils.coins + gameCoins) >= 100;
+	}
+
+	public void addHP() {
+		for (ObjectPuz enemy : enemiesList) {
+			enemy.setX(2*maxScreenX);
+			enemy.setSpeed(0);
+			lastEnemy = enemiesList.get(0);
+			lastEnemy.setSpeed(speedGame + 0.5);
+		}
+		corgi.setHP(1);
+		corgi.setJump(false);
+		corgi.setDuckDown(false);
+	}
+
 	private void generateCoin(ArrayList<ArrayList<Coin>> coinsList, double speed) {
 		ArrayList<ArrayList<Coin>> coinsList2 = new ArrayList<>();
 		for (ArrayList<Coin> coinsListNew : coinsList) {
@@ -414,6 +453,12 @@ public class GameManager {
 	public void gameOver(CorePuz corePuz) {
 		SettingsGameUtils.addDistance((int)distance);
 		SettingsGameUtils.setCoins(gameCoins);
+		SettingsGameUtils.saveSettings(corePuz);
+	}
+
+	public void gameOverX2(CorePuz corePuz) {
+		SettingsGameUtils.addDistance((int)distance);
+		SettingsGameUtils.setCoins(gameCoins*2);
 		SettingsGameUtils.saveSettings(corePuz);
 	}
 

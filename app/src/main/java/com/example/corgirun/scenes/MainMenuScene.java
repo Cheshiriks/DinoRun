@@ -2,6 +2,7 @@ package com.example.corgirun.scenes;
 
 import static com.example.corgirun.clases.Type.DINO_DOUX;
 import static com.example.corgirun.clases.Type.DINO_MORT;
+import static com.example.corgirun.clases.Type.DINO_NEG;
 import static com.example.corgirun.clases.Type.DINO_SANTA;
 import static com.example.corgirun.clases.Type.DINO_TARD;
 import static com.example.corgirun.clases.Type.DINO_VITA;
@@ -9,7 +10,9 @@ import static com.example.corgirun.clases.Type.DINO_VITA;
 import android.graphics.Color;
 
 import com.example.corgirun.clases.MainMenuManager;
+import com.example.corgirun.clases.ThanksManager;
 import com.example.corgirun.objects.Dinosaurs;
+import com.example.corgirun.scenes.GameScene.GameState;
 import com.example.corgirun.utilits.ResourceUtils;
 import com.example.corgirun.utilits.SettingsGameUtils;
 import com.example.puzzle.CorePuz;
@@ -18,17 +21,44 @@ import com.example.puzzle.ScenePuz;
 public class MainMenuScene extends ScenePuz {
 
     MainMenuManager mainMenuManager;
+    ThanksManager thanksManager;
+    GameState gameState;
 
     public MainMenuScene(CorePuz corePuz) {
         super(corePuz);
         mainMenuManager = new MainMenuManager(corePuz, sceneWidth, sceneHeight);
+        thanksManager = new ThanksManager(corePuz, sceneWidth, sceneHeight);
+        gameState = GameState.RUNNING;
     }
 
     @Override
     public void update() {
+        if (gameState == GameState.RUNNING) {
+            updateStateRunning();
+        }
+        if (gameState == GameState.PAUSE) {
+            updateStatePause();
+        }
+    }
+
+    @Override
+    public void drawing() {
+        if (gameState == GameState.RUNNING) {
+            drawingStateRunning();
+        }
+        if (gameState == GameState.PAUSE) {
+            drawingStatePause();
+        }
+    }
+
+    private void updateStateRunning() {
 
         int sprite = mainMenuManager.getSprite();
         boolean isBought = mainMenuManager.getDinosaurs().isBought();
+
+        if (mainMenuManager.getButtonQues().isTouch(corePuz)) {
+            gameState = GameState.PAUSE;
+        }
 
         //Новая игра. Переход на GameScene
         if (mainMenuManager.getButtonPlay().isTouch(corePuz)) {
@@ -47,6 +77,9 @@ public class MainMenuScene extends ScenePuz {
                 }
                 if (sprite == 4) {
                     corePuz.setScene(new GameScene(corePuz, DINO_TARD));
+                }
+                if (sprite == 5) {
+                    corePuz.setScene(new GameScene(corePuz, DINO_NEG));
                 }
             }
         }
@@ -78,9 +111,17 @@ public class MainMenuScene extends ScenePuz {
                 }
             }
         }
+        if (mainMenuManager.getHi20000().isTouch(corePuz)) {
+            if (!isBought && sprite == 5) {
+                if (SettingsGameUtils.distance >= 20000) {
+                    SettingsGameUtils.setIsBought(5, true);
+                    mainMenuManager.getDinosaurs().setBought(true);
+                }
+            }
+        }
 
         if (mainMenuManager.getButtonRight().isTouch(corePuz)) {
-            if (sprite < 4) {
+            if (sprite < 5) {
                 sprite++;
                 mainMenuManager.setSprite(sprite);
                 mainMenuManager.setDinosaurs(new Dinosaurs(96, 30, sprite, SettingsGameUtils.getIsBought(sprite)));
@@ -98,8 +139,7 @@ public class MainMenuScene extends ScenePuz {
         mainMenuManager.update();
     }
 
-    @Override
-    public void drawing() {
+    private void drawingStateRunning() {
         graphicsPuz.drawTexture(ResourceUtils.menu, 0, 0);
 
         mainMenuManager.drawing(graphicsPuz);
@@ -107,6 +147,17 @@ public class MainMenuScene extends ScenePuz {
         graphicsPuz.drawText("HI  " + SettingsGameUtils.distance, 15, 12, Color.WHITE, 16, ResourceUtils.menuFont);
         graphicsPuz.drawText("BC  " + SettingsGameUtils.coins, 15, 22, Color.YELLOW, 16, ResourceUtils.menuFont);
 
+    }
+
+    private void updateStatePause() {
+        if (thanksManager.getButtonThanksClose().isTouch(corePuz)) {
+            gameState = GameState.RUNNING;
+        }
+        thanksManager.update();
+    }
+
+    private void drawingStatePause() {
+        thanksManager.drawing(graphicsPuz);
     }
 
     @Override
@@ -127,5 +178,6 @@ public class MainMenuScene extends ScenePuz {
         mainMenuManager.getCoins500().getButtonSound().dispose();
         mainMenuManager.getCoins1000().getButtonSound().dispose();
         mainMenuManager.getCoins3000().getButtonSound().dispose();
+        mainMenuManager.getHi20000().getButtonSound().dispose();
     }
 }
