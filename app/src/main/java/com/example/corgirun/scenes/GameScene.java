@@ -21,6 +21,7 @@ public class GameScene extends ScenePuz {
         READE,
         RUNNING,
         PAUSE,
+        SETTINGS,
         END
     }
 
@@ -30,6 +31,12 @@ public class GameScene extends ScenePuz {
     GameOverManager gameOverManager;
     Type dinoType;
     MusicPuz music;
+
+    //----------Debug FPS------------
+    float updates = 0;
+    float drawings = 0;
+    long timer = System.currentTimeMillis();;
+    //----------Debug FPS------------
 
     public GameScene(CorePuz corePuz, Type dinoType) {
         super(corePuz);
@@ -103,26 +110,20 @@ public class GameScene extends ScenePuz {
         gameManager.update();
     }
 
-    //----------Debug FPS------------
-    float updates = 0;
-    float drawings = 0;
-    long timer = System.currentTimeMillis();;
-    //----------Debug FPS------------
-
-
     private void drawingStateRunning() {
         gameManager.drawing(corePuz, graphicsPuz);
         graphicsPuz.drawText("HI  " + (int)gameManager.getDistance(), 190, 12, Color.WHITE, 16, ResourceUtils.menuFont);
         graphicsPuz.drawText("BC  " + (int)gameManager.getGameCoins(), 190, 22, Color.YELLOW, 16, ResourceUtils.menuFont);
 
         //----------Debug FPS------------
-        graphicsPuz.drawText("FPS " + drawings, 30, 15, Color.WHITE, 16, ResourceUtils.menuFont);
-        updates++;
-        if (System.currentTimeMillis() - timer > 1000) {
-            Date date = new Date();
-            drawings = updates;
-            updates = 0;
-            timer += 1000;
+        if (SettingsGameUtils.isSettings()) {
+            graphicsPuz.drawText("FPS " + drawings, 30, 15, Color.WHITE, 16, ResourceUtils.menuFont);
+            updates++;
+            if (System.currentTimeMillis() - timer > 1000) {
+                drawings = updates;
+                updates = 0;
+                timer += 1000;
+            }
         }
         //----------Debug FPS------------
 

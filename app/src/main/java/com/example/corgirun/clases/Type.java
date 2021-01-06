@@ -14,6 +14,7 @@ public enum Type {
 	DINO_DOUX,
 	DINO_TARD,
 	DINO_MORT,
-	DINO_NEG
+	DINO_NEG,
+	DINO_CROCY
 
 }

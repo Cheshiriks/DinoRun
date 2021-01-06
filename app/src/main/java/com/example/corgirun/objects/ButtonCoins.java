@@ -34,10 +34,16 @@ public class ButtonCoins extends ButtonPuz {
 						ResourceUtils.buttCoins.get(5)
 				);
 				break;
-			case 20000:
+			case 20000: //пробег
 				animationButton = new AnimationButtonPuz(
 						ResourceUtils.buttCoins.get(6),
 						ResourceUtils.buttCoins.get(7)
+				);
+				break;
+			case 5000:
+				animationButton = new AnimationButtonPuz(
+						ResourceUtils.buttCoins.get(8),
+						ResourceUtils.buttCoins.get(9)
 				);
 				break;
 		}
