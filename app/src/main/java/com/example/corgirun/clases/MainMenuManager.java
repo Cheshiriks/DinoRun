@@ -5,6 +5,7 @@ import com.example.corgirun.objects.ButtonLeft;
 import com.example.corgirun.objects.ButtonPlay;
 import com.example.corgirun.objects.ButtonQues;
 import com.example.corgirun.objects.ButtonRight;
+import com.example.corgirun.objects.ButtonSett;
 import com.example.corgirun.objects.Dinosaurs;
 import com.example.corgirun.objects.Fire;
 import com.example.corgirun.utilits.ResourceUtils;
@@ -29,9 +30,11 @@ public class MainMenuManager {
 	private ButtonCoins coins1000;
 	private ButtonCoins coins3000;
 	private ButtonCoins hi20000;
+	private ButtonCoins coins5000;
 
 	private ButtonPlay buttonPlay;
 	private ButtonQues buttonQues;
+	private ButtonSett buttonSett;
 
 	private Dinosaurs dinosaurs;
 
@@ -40,8 +43,8 @@ public class MainMenuManager {
 		this.maxScreenY = sceneHeight;
 		sprite = 0;
 
-		fire1 = new Fire(0, 0, 0, maxScreenX, maxScreenY);
-		fire2 = new Fire(0, 192, 0, maxScreenX, maxScreenY);
+		fire1 = new Fire(0, -1, 0, maxScreenX, maxScreenY);
+		fire2 = new Fire(0, 191, 0, maxScreenX, maxScreenY);
 
 		buttonLeft = new ButtonLeft(corePuz, 61, 55);
 		buttonRight = new ButtonRight(corePuz, 161, 55);
@@ -50,9 +53,11 @@ public class MainMenuManager {
 		coins1000 = new ButtonCoins(corePuz, 90, 96, 1000);
 		coins3000 = new ButtonCoins(corePuz, 90, 96, 3000);
 		hi20000 = new ButtonCoins(corePuz, 90, 96, 20000);
+		coins5000 = new ButtonCoins(corePuz, 90, 96, 5000);
 
 		buttonPlay = new ButtonPlay(corePuz, 109, 93);
 		buttonQues = new ButtonQues(corePuz, 220, 4);
+		buttonSett = new ButtonSett(corePuz, 200, 4);
 
 		dinosaurs = new Dinosaurs(96, 30, sprite, SettingsGameUtils.getIsBought(sprite));
 	}
@@ -61,6 +66,7 @@ public class MainMenuManager {
 		fire1.update();
 		fire2.update();
 		buttonQues.update();
+		buttonSett.update();
 
 		buttonLeft.update();
 		buttonRight.update();
@@ -71,6 +77,7 @@ public class MainMenuManager {
 			coins1000.setX(-200);
 			coins3000.setX(-200);
 			hi20000.setX(-200);
+			coins5000.setX(-200);
 			buttonPlay.setX(-200);
 
 			coins500.update();
@@ -81,6 +88,7 @@ public class MainMenuManager {
 			coins1000.setX(90);
 			coins3000.setX(-200);
 			hi20000.setX(-200);
+			coins5000.setX(-200);
 			buttonPlay.setX(-200);
 
 			coins1000.update();
@@ -91,6 +99,7 @@ public class MainMenuManager {
 			coins1000.setX(-200);
 			coins3000.setX(90);
 			hi20000.setX(-200);
+			coins5000.setX(-200);
 			buttonPlay.setX(-200);
 
 			coins3000.update();
@@ -101,9 +110,21 @@ public class MainMenuManager {
 			coins1000.setX(-200);
 			coins3000.setX(-200);
 			hi20000.setX(90);
+			coins5000.setX(-200);
 			buttonPlay.setX(-200);
 
 			hi20000.update();
+		}
+		if (sprite == 6 && !dinosaurs.isBought()) {
+
+			coins500.setX(-200);
+			coins1000.setX(-200);
+			coins3000.setX(-200);
+			hi20000.setX(-200);
+			coins5000.setX(90);
+			buttonPlay.setX(-200);
+
+			coins5000.update();
 		}
 
 		if (dinosaurs.isBought()) {
@@ -112,6 +133,7 @@ public class MainMenuManager {
 			coins1000.setX(-200);
 			coins3000.setX(-200);
 			hi20000.setX(-200);
+			coins5000.setX(-200);
 			buttonPlay.setX(109);
 
 			buttonPlay.update();
@@ -124,6 +146,7 @@ public class MainMenuManager {
 		fire1.drawing(graphicsPuz);
 		fire2.drawing(graphicsPuz);
 		buttonQues.drawing(graphicsPuz);
+		buttonSett.drawing(graphicsPuz);
 
 		buttonLeft.drawing(graphicsPuz);
 		buttonRight.drawing(graphicsPuz);
@@ -140,6 +163,9 @@ public class MainMenuManager {
 		if (sprite == 5 && !dinosaurs.isBought()) {
 			hi20000.drawing(graphicsPuz);
 		}
+		if (sprite == 6 && !dinosaurs.isBought()) {
+			coins5000.drawing(graphicsPuz);
+		}
 
 		if (dinosaurs.isBought()) {
 			buttonPlay.drawing(graphicsPuz);
@@ -147,6 +173,10 @@ public class MainMenuManager {
 
 		dinosaurs.drawing(graphicsPuz);
 
+		//информация о динозавриках
+		if (sprite == 6) {
+			graphicsPuz.drawTexture(ResourceUtils.infoCrocy, 5, 86);
+		}
 
 		//замок для некупленных
 		if (!dinosaurs.isBought()) {
@@ -157,13 +187,17 @@ public class MainMenuManager {
 		if (sprite == 0) {
 			graphicsPuz.drawTexture(ResourceUtils.buttArrows.get(1), 61, 55);
 		}
-		if (sprite == 5) {
+		if (sprite == 6) {
 			graphicsPuz.drawTexture(ResourceUtils.buttArrows.get(3), 161, 55);
 		}
 	}
 
 	public ButtonQues getButtonQues() {
 		return buttonQues;
+	}
+
+	public ButtonSett getButtonSett() {
+		return buttonSett;
 	}
 
 	public ButtonLeft getButtonLeft() {
@@ -188,6 +222,10 @@ public class MainMenuManager {
 
 	public ButtonCoins getCoins3000() {
 		return coins3000;
+	}
+
+	public ButtonCoins getCoins5000() {
+		return coins5000;
 	}
 
 	public ButtonCoins getHi20000() {

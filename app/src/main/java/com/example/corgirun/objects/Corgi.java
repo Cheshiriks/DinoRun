@@ -153,6 +153,25 @@ public class Corgi extends ObjectPuz {
 						ResourceUtils.spriteDuckDown.get(35)
 				);
 				break;
+			case DINO_CROCY:
+				animationSpriteCorgi = new AnimationGamePuz(
+						speed,
+						ResourceUtils.spritePlayer.get(36),
+						ResourceUtils.spritePlayer.get(37),
+						ResourceUtils.spritePlayer.get(38),
+						ResourceUtils.spritePlayer.get(39),
+						ResourceUtils.spritePlayer.get(40),
+						ResourceUtils.spritePlayer.get(41),
+						ResourceUtils.jumpCorgi.get(6),
+						ResourceUtils.spriteDuckDown.get(36),
+						ResourceUtils.spriteDuckDown.get(37),
+						ResourceUtils.spriteDuckDown.get(38),
+						ResourceUtils.spriteDuckDown.get(39),
+						ResourceUtils.spriteDuckDown.get(40),
+						ResourceUtils.spriteDuckDown.get(41)
+				);
+				HP = 2;
+				break;
 		}
 
 

@@ -292,6 +292,10 @@ public class GameManager {
 		for (ObjectPuz enemy : enemiesList) {
 			if (CollisionDetect.collisionDetect(corgi, enemy)) {
 				corgi.setHP(corgi.getHP() - 1);
+				if (corgi.getHP() > 0) {
+					enemy.setX(2*maxScreenX);
+					enemy.setSpeed(0);
+				}
 			}
 		}
 

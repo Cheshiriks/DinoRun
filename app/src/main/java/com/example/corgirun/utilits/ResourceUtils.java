@@ -44,6 +44,9 @@ public class ResourceUtils {
 	public static Bitmap buttQuesAtlas;
 	public static ArrayList<Bitmap> buttQues;
 
+	public static Bitmap buttSettAtlas;
+	public static ArrayList<Bitmap> buttSett;
+
 	public static Bitmap buttThanksCloseAtlas;
 	public static ArrayList<Bitmap> buttThanksClose;
 
@@ -72,6 +75,8 @@ public class ResourceUtils {
 	public static Bitmap thanks;
 
 	public static Bitmap lock;
+
+	public static Bitmap infoCrocy;
 
 	//шрифты
 	public static Typeface menuFont;
